@@ -1,7 +1,7 @@
 package com.zkzong.framework.example.controller;
 
-import com.zkzong.framework.example.req.DemoReq;
-import com.zkzong.framework.example.resp.DemoResp;
+import com.zkzong.framework.core.req.Req;
+import com.zkzong.framework.core.resp.Resp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.*;
 public class DemoController implements BaseController {
 
     @PostMapping("/post")
-    public DemoResp post(@RequestBody @Validated DemoReq demoReq) {
+    public Resp post(@RequestBody @Validated Req req) {
         log.info("post");
-        DemoResp demoResp = new DemoResp();
-        return demoResp;
+        Resp resp = new Resp();
+        return resp;
     }
 
     //@GetMapping("/get")
