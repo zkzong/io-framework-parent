@@ -7,7 +7,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/demo")
 @Slf4j
 public class DemoController implements BaseController {
 
@@ -18,14 +17,12 @@ public class DemoController implements BaseController {
         return resp;
     }
 
-    //@GetMapping("/get")
     @Override
     public String get(@RequestParam String name, @RequestParam Integer age) {
         log.info("get");
         return "Hello World, name=" + name + ", age=" + age;
     }
 
-    //@RequestMapping("/map")
     @Override
     public String map(@RequestParam String name) {
         log.info("map");

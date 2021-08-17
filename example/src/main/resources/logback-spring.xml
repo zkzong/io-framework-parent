@@ -76,7 +76,7 @@
         </filter>
     </appender>
 
-    <logger name="com.zkzong.framework.core.LogAspect" additivity="false">
+    <logger name="com.zkzong.framework.core.aspect.LogAspect" additivity="false">
         <level value="info"/>
         <appender-ref ref="logaspect" />
     </logger>
