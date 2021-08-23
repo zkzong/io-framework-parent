@@ -3,12 +3,10 @@ package com.zkzong.framework.core.aspect;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -21,8 +19,8 @@ import java.util.Arrays;
  * @Author: zong
  * @Date: 2021/8/2
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 @Slf4j
 public class LogAspect {
 
