@@ -14,7 +14,6 @@ import java.time.format.DateTimeFormatter;
  * @Author: zong
  * @Date: 2021/8/20
  */
-//@Component
 @Slf4j
 public class DeleteInterceptor implements HandlerInterceptor {
 
@@ -31,12 +30,18 @@ public class DeleteInterceptor implements HandlerInterceptor {
 
                 LocalDateTime now = LocalDateTime.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                // 时间
                 sb.append(now.format(formatter)).append("|");
 
                 final String className = handlerMethod.getBeanType().getName();
                 final String methodName = handlerMethod.getMethod().getName();
                 String uri = request.getRequestURI();
-                sb.append(uri).append("|")
+
+                // 请求方式
+                sb.append(request.getMethod()).append("|")
+                        // URI
+                        .append(uri).append("|")
+                        // 类名、方法名
                         .append(className).append(".").append(methodName).append("]");
                 log.info(sb.toString());
             }
