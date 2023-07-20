@@ -1,5 +1,7 @@
 package com.zkzong.framework.core.filter;
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +13,7 @@ import java.time.format.DateTimeFormatter;
  * @Author: zong
  * @Date: 2021/8/20
  */
+@Slf4j
 @WebFilter(urlPatterns = "/*")
 public class DleteFilter implements Filter {
     @Override
@@ -34,6 +37,7 @@ public class DleteFilter implements Filter {
                     .append(httpServletRequest.getMethod()).append("|")
                     // URI
                     .append(httpServletRequest.getRequestURI()).append("]");
+            log.info(sb.toString());
         }
 
         filterChain.doFilter(servletRequest, servletResponse);
