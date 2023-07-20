@@ -6,7 +6,7 @@
     <property name="logaspect_file" value="./logs/logaspect.log"/>
 
     <!--控制日志输出级别-->
-    <logger name="com.zkzong" level="debug"></logger>
+    <logger name="com.example" level="debug"></logger>
 
     <!--输出到控制台-->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
@@ -76,7 +76,7 @@
         </filter>
     </appender>
 
-    <logger name="com.zkzong.framework.core.aspect.LogAspect" additivity="false">
+    <logger name="com.example.framework.core.aspect.LogAspect" additivity="false">
         <level value="info"/>
         <appender-ref ref="logaspect" />
     </logger>
