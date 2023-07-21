@@ -19,6 +19,8 @@
     <modules>
         <module>framework-core</module>
         <module>example</module>
+        <module>example-provider</module>
+        <module>example-consumer</module>
     </modules>
 
     <build>
