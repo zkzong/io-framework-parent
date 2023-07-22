@@ -1,4 +1,4 @@
-package com.example.framework.core.trace;
+package com.example.framework.core.trace.util;
 
 import java.util.UUID;
 

@@ -1,5 +1,7 @@
-package com.example.framework.core.trace;
+package com.example.framework.core.trace.interceptor;
 
+import com.example.framework.core.trace.Constants;
+import com.example.framework.core.trace.util.TraceIdUtil;
 import org.slf4j.MDC;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
