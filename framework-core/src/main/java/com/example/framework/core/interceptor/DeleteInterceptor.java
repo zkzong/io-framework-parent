@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Enumeration;
 
 /**
  * @Author: zong
@@ -24,6 +25,16 @@ public class DeleteInterceptor implements HandlerInterceptor {
         Delete annotation;
         if (handler instanceof HandlerMethod) {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
+
+            // 入参使用@RequestParam
+            Enumeration<String> parameterNames = request.getParameterNames();
+            while (parameterNames.hasMoreElements()) {
+                String name = parameterNames.nextElement();
+                String[] parameterValues = request.getParameterValues(name);
+                log.info("{} = {}", name, parameterValues);
+                System.out.println(name + " " + parameterValues[0]);
+            }
+
             annotation = handlerMethod.getMethodAnnotation(Delete.class);
             if (annotation != null) {
                 StringBuilder sb = new StringBuilder("使用拦截器统计Delete方法[");

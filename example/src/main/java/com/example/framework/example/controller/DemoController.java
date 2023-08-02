@@ -20,6 +20,7 @@ public class DemoController implements BaseController {
     public Resp post(@RequestBody @Validated Req req) {
         log.info("post");
         Resp resp = new Resp();
+        resp.setData(req);
         return resp;
     }
 
