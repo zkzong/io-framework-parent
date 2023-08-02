@@ -57,7 +57,7 @@ public class LogAspect {
             final String hostAddress = InetAddress.getLocalHost().getHostAddress();
             final String port = environment.getProperty("server.port");
 
-            StringBuilder sb = new StringBuilder("使用拦截器统计Delete方法[");
+            StringBuilder sb = new StringBuilder("使用Aspect[");
 
             // 请求方ip
             sb.append(request.getRemoteAddr()).append("|")
