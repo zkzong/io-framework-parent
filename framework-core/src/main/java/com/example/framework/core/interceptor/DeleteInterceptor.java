@@ -37,25 +37,27 @@ public class DeleteInterceptor implements HandlerInterceptor {
 
             annotation = handlerMethod.getMethodAnnotation(Delete.class);
             if (annotation != null) {
-                StringBuilder sb = new StringBuilder("使用Interceptor统计Delete方法[");
-
-                LocalDateTime now = LocalDateTime.now();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                // 时间
-                sb.append(now.format(formatter)).append("|");
-
-                final String className = handlerMethod.getBeanType().getName();
-                final String methodName = handlerMethod.getMethod().getName();
-                String uri = request.getRequestURI();
-
-                // 请求方式
-                sb.append(request.getMethod()).append("|")
-                        // URI
-                        .append(uri).append("|")
-                        // 类名、方法名
-                        .append(className).append(".").append(methodName).append("]");
-                log.info(sb.toString());
+                log.info("该方法有Delete注解");
             }
+
+            StringBuilder sb = new StringBuilder("使用Interceptor获取请求信息[");
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            // 时间
+            sb.append(now.format(formatter)).append("|");
+
+            final String className = handlerMethod.getBeanType().getName();
+            final String methodName = handlerMethod.getMethod().getName();
+            String uri = request.getRequestURI();
+
+            // 请求方式
+            sb.append(request.getMethod()).append("|")
+                    // URI
+                    .append(uri).append("|")
+                    // 类名、方法名
+                    .append(className).append(".").append(methodName).append("]");
+            log.info(sb.toString());
         } else {
             return true;
         }

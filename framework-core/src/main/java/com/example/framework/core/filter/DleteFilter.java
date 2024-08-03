@@ -27,7 +27,7 @@ public class DleteFilter implements Filter {
         if (servletRequest instanceof HttpServletRequest) {
             HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 
-            StringBuilder sb = new StringBuilder("使用Filter统计Delete方法[");
+            StringBuilder sb = new StringBuilder("使用Filter获取请求信息[");
 
             LocalDateTime now = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

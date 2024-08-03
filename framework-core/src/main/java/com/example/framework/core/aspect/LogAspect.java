@@ -1,5 +1,6 @@
 package com.example.framework.core.aspect;
 
+import com.example.framework.core.annotation.Delete;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
@@ -57,7 +58,12 @@ public class LogAspect {
             final String hostAddress = InetAddress.getLocalHost().getHostAddress();
             final String port = environment.getProperty("server.port");
 
-            StringBuilder sb = new StringBuilder("使用Aspect[");
+            Delete annotation = methodSignature.getMethod().getAnnotation(Delete.class);
+            if (annotation != null) {
+                log.info("该方法有Delete注解");
+            }
+
+            StringBuilder sb = new StringBuilder("使用Aspect获取请求信息[");
 
             // 请求方ip
             sb.append(request.getRemoteAddr()).append("|")
