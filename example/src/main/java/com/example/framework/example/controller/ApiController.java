@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 通过注解@ApiVersion修改uri请求路径
+ *
  * @Author: zong
  * @Date: 2021/9/3
  */

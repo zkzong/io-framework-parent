@@ -37,7 +37,7 @@ public class DeleteInterceptor implements HandlerInterceptor {
 
             annotation = handlerMethod.getMethodAnnotation(Delete.class);
             if (annotation != null) {
-                StringBuilder sb = new StringBuilder("使用拦截器统计Delete方法[");
+                StringBuilder sb = new StringBuilder("使用Interceptor统计Delete方法[");
 
                 LocalDateTime now = LocalDateTime.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
