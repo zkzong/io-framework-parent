@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/demo")
 public interface BaseController {
 
-    @GetMapping("/get")
-    String get(@RequestParam String name, @RequestParam Integer age);
-
-    @RequestMapping("/map")
-    String map(@RequestParam String name);
+    @GetMapping("/getParam")
+    String getParam(@RequestParam String name, @RequestParam Integer age);
 
 }

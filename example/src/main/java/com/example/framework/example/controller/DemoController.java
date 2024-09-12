@@ -16,6 +16,12 @@ public class DemoController implements BaseController {
     @Autowired
     private DemoService demoService;
 
+    /**
+     * post请求，入参使用@RequestBody，且加校验
+     *
+     * @param req
+     * @return
+     */
     @PostMapping("/post")
     public Resp post(@RequestBody @Validated Req req) {
         log.info("post");
@@ -24,17 +30,41 @@ public class DemoController implements BaseController {
         return resp;
     }
 
+    /**
+     * get请求，入参使用@RequestParam
+     *
+     * @param name
+     * @param age
+     * @return
+     */
+    @Delete
     @Override
-    public String get(@RequestParam String name, @RequestParam Integer age) {
-        log.info("get");
+    public String getParam(@RequestParam String name, @RequestParam Integer age) {
+        log.info("getParam");
         return "Hello World, name=" + name + ", age=" + age;
     }
 
-    @Delete
-    @Override
-    public String map(@RequestParam String name) {
-        log.info("map");
-        final String hello = demoService.sayHello();
-        return hello + ", " + name;
+    /**
+     * get请求，如果入参是对象且没加注解，需要传入form
+     *
+     * @param req
+     * @return
+     */
+    @GetMapping("getForm")
+    public String getForm(Req req) {
+        log.info("getForm");
+        return req.toString();
+    }
+
+    /**
+     * get请求，如果入参是对象且加注解@RequestBody，则传入json
+     *
+     * @param req
+     * @return
+     */
+    @GetMapping("getBody")
+    public String getBody(@RequestBody Req req) {
+        log.info("getBody");
+        return req.toString();
     }
 }

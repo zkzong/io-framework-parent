@@ -1,6 +1,7 @@
 package com.example.framework.core.req;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
@@ -10,6 +11,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
+@ToString
 public class Req implements Serializable {
 
     @NotBlank(message = "userId不能为空")

@@ -63,6 +63,11 @@ public class LogAspect {
                 log.info("该方法有Delete注解");
             }
 
+            // 如果入参是form方式，joinPoint.getArgs()只能获取到值，不能获取key
+            request.getParameterMap().entrySet().forEach(entry -> {
+                log.info(entry.getKey() + "=" + entry.getValue());
+            });
+
             StringBuilder sb = new StringBuilder("使用Aspect获取请求信息[");
 
             // 请求方ip
