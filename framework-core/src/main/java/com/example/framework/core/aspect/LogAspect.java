@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @Author: zong
@@ -64,8 +66,9 @@ public class LogAspect {
             }
 
             // 如果入参是form方式，joinPoint.getArgs()只能获取到值，不能获取key
-            request.getParameterMap().entrySet().forEach(entry -> {
-                log.info(entry.getKey() + "=" + entry.getValue());
+            Map<String, String[]> parameterMap = request.getParameterMap();
+            parameterMap.entrySet().forEach(entry -> {
+                log.info(entry.getKey() + "=" + Arrays.stream(entry.getValue()).collect(Collectors.joining(",")));
             });
 
             StringBuilder sb = new StringBuilder("使用Aspect获取请求信息[");
