@@ -32,8 +32,8 @@ public class RespUtil {
      * @param <T>
      * @return
      */
-    public static <T> Resp<T> error(StatusEnum statusEnum) {
-        return error(statusEnum.getCode(), statusEnum.getMessage());
+    public static <T> Resp<T> fail(StatusEnum statusEnum) {
+        return fail(statusEnum.getCode(), statusEnum.getMessage());
     }
 
     /**
@@ -44,7 +44,7 @@ public class RespUtil {
      * @param <T>
      * @return
      */
-    public static <T> Resp<T> error(String code, String message) {
+    public static <T> Resp<T> fail(String code, String message) {
         Resp<T> response = new Resp<>();
         response.setCode(code);
         response.setMessage(message);

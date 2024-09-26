@@ -24,6 +24,7 @@
 ### 统一异常处理
 
 GlobalExceptionHandler
+ExceptionController
 
 自定义注解优先级？
 
