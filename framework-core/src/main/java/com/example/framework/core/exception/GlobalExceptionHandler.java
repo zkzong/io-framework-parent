@@ -24,10 +24,10 @@ public class GlobalExceptionHandler {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    private static int DUPLICATE_KEY_CODE = 1001;
-    private static int PARAM_FAIL_CODE = 1002;
-    private static int VALIDATION_CODE = 1003;
-    private static int METHOD_NOT_SUPPORTED = 1004;
+    private static String DUPLICATE_KEY_CODE = "1001";
+    private static String PARAM_FAIL_CODE = "1002";
+    private static String VALIDATION_CODE = "1003";
+    private static String METHOD_NOT_SUPPORTED = "1004";
 
     /**
      * 处理自定义异常
@@ -79,7 +79,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NoHandlerFoundException.class)
     public Resp handlerNoFoundException(Exception e) {
         logger.error(e.getMessage(), e);
-        return new Resp(404, "路径不存在，请检查路径是否正确");
+        return new Resp("404", "路径不存在，请检查路径是否正确");
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
@@ -97,6 +97,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public Resp handleException(Exception e) {
         logger.error(e.getMessage(), e);
-        return new Resp(500, "系统繁忙,请稍后再试");
+        return new Resp("500", "系统繁忙,请稍后再试");
     }
 }

@@ -11,11 +11,11 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Resp<T> implements Serializable {
 
-    private Integer code;
+    private String code;
     private String message;
     private T data;
 
-    public Resp(Integer code, String message) {
+    public Resp(String code, String message) {
         this.code = code;
         this.message = message;
     }

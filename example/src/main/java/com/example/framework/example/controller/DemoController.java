@@ -3,6 +3,7 @@ package com.example.framework.example.controller;
 import com.example.framework.core.annotation.Delete;
 import com.example.framework.core.req.Req;
 import com.example.framework.core.resp.Resp;
+import com.example.framework.core.resp.RespUtil;
 import com.example.framework.example.service.DemoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class DemoController implements BaseController {
      * @return
      */
     @PostMapping("/post")
-    public Resp post(@RequestBody @Validated Req req) {
+    public Resp<Req> post(@RequestBody @Validated Req req) {
         log.info("post");
         Resp resp = new Resp();
         resp.setData(req);
@@ -39,9 +40,9 @@ public class DemoController implements BaseController {
      */
     @Delete
     @Override
-    public String getParam(@RequestParam String name, @RequestParam Integer age) {
+    public Resp<String> getParam(@RequestParam String name, @RequestParam Integer age) {
         log.info("getParam");
-        return "Hello World, name=" + name + ", age=" + age;
+        return RespUtil.success("Hello World, name=" + name + ", age=" + age);
     }
 
     /**
@@ -51,9 +52,9 @@ public class DemoController implements BaseController {
      * @return
      */
     @GetMapping("getForm")
-    public String getForm(Req req) {
+    public Resp<String> getForm(Req req) {
         log.info("getForm");
-        return req.toString();
+        return RespUtil.success(req.toString());
     }
 
     /**
@@ -63,8 +64,8 @@ public class DemoController implements BaseController {
      * @return
      */
     @GetMapping("getBody")
-    public String getBody(@RequestBody Req req) {
+    public Resp<String> getBody(@RequestBody Req req) {
         log.info("getBody");
-        return req.toString();
+        return RespUtil.success(req.toString());
     }
 }

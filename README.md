@@ -23,6 +23,8 @@
 
 ### 统一异常处理
 
+GlobalExceptionHandler
+
 自定义注解优先级？
 
 ### apiversion
@@ -30,4 +32,11 @@
 通过注解修改uri请求路径
 
 ### traceid
+
+### 统一返回结果
+
+Resp
+RespUtil
+
+
 
