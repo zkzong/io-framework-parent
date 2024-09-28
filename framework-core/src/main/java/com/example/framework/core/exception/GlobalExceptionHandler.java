@@ -92,12 +92,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DuplicateKeyException.class)
     public Resp handleDuplicateKeyException(DuplicateKeyException e) {
         logger.error(e.getMessage(), e);
-        return RespUtil.fail(DUPLICATE_KEY_CODE, "数据重复,请检查后提交");
+        return RespUtil.fail(DUPLICATE_KEY_CODE, "数据重复，请检查后提交");
     }
 
     @ExceptionHandler(Exception.class)
     public Resp handleException(Exception e) {
         logger.error(e.getMessage(), e);
-        return RespUtil.fail("500", "系统繁忙,请稍后再试");
+        return RespUtil.fail("500", "系统繁忙，请稍后再试");
     }
 }
