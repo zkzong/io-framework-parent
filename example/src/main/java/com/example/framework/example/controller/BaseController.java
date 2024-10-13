@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
+ * 基础Controller
+ *
  * @Author: zong
  * @Date: 2021/8/12
  */
