@@ -1,0 +1,418 @@
+{
+  "groups": [
+    {
+      "name": "multi.database",
+      "type": "xxx.data.mybatis.config.DynamicDataSourceProperties",
+      "sourceType": "xxx.data.mybatis.config.DynamicDataSourceProperties",
+      "description": "数据源相关配置."
+    },
+    {
+      "name": "multi.mybatis",
+      "type": "xxx.data.mybatis.config.mapper.MybatisProperties",
+      "sourceType": "xxx.data.mybatis.config.mapper.MybatisProperties",
+      "description": "MyBatis 配置."
+    },
+    {
+      "name": "multi.mapper",
+      "type": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "MyBatis mapper 配置."
+    },
+    {
+      "name": "multi.pagehelper",
+      "type": "xxx.data.mybatis.config.pagehelper.PageHelperProperties",
+      "sourceType": "xxx.data.mybatis.config.pagehelper.PageHelperProperties",
+      "description": "MyBatis pagehelper 配置."
+    }
+  ],
+  "properties": [
+    {
+      "name": "multi.database.primary",
+      "type": "java.lang.String",
+      "sourceType": "xxx.data.mybatis.config.DynamicDataSourceProperties",
+      "description": "对应 connection 中的默认连接."
+    },
+    {
+      "name": "multi.database.connection",
+      "type": "java.util.Map<java.lang.String,xxx.data.mybatis.config.DataSourceProperty>",
+      "sourceType": "xxx.data.mybatis.config.DynamicDataSourceProperties",
+      "description": "单个数据源配置."
+    },
+    {
+      "name": "multi.mybatis.base-packages",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "xxx.data.mybatis.config.mapper.MybatisProperties",
+      "description": "Base packages to scan for MyBatis interfaces."
+    },
+    {
+      "name": "multi.mybatis.config-location",
+      "type": "java.lang.String",
+      "sourceType": "xxx.data.mybatis.config.mapper.MybatisProperties",
+      "description": "Location of MyBatis xml config file."
+    },
+    {
+      "name": "multi.mybatis.mapper-locations",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "xxx.data.mybatis.config.mapper.MybatisProperties",
+      "description": "Locations of MyBatis mapper files."
+    },
+    {
+      "name": "multi.mybatis.type-aliases-package",
+      "type": "java.lang.String",
+      "sourceType": "xxx.data.mybatis.config.mapper.MybatisProperties",
+      "description": "Packages to search type aliases. (Package delimiters are \",; \\t\\n\")."
+    },
+    {
+      "name": "multi.mybatis.type-aliases-super-type",
+      "type": "java.lang.Class",
+      "sourceType": "xxx.data.mybatis.config.mapper.MybatisProperties",
+      "description": "The super class for filtering type alias."
+    },
+    {
+      "name": "multi.mybatis.type-handlers-package",
+      "type": "java.lang.String",
+      "sourceType": "xxx.data.mybatis.config.mapper.MybatisProperties",
+      "description": "Packages to search for type handlers. (Package delimiters are \",; \\t\\n\")."
+    },
+    {
+      "name": "multi.mybatis.check-config-location",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.mapper.MybatisProperties",
+      "description": "Indicates whether perform presence check of the MyBatis xml config file.",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.mybatis.executor-type",
+      "type": "org.apache.ibatis.session.ExecutorType",
+      "sourceType": "xxx.data.mybatis.config.mapper.MybatisProperties",
+      "description": "Execution mode for {@link org.mybatis.spring.SqlSessionTemplate}."
+    },
+    {
+      "name": "multi.mybatis.configuration-properties",
+      "type": "java.util.Properties",
+      "sourceType": "xxx.data.mybatis.config.mapper.MybatisProperties",
+      "description": "Externalized properties for MyBatis configuration."
+    },
+    {
+      "name": "multi.mybatis.configuration",
+      "type": "org.apache.ibatis.session.Configuration",
+      "sourceType": "xxx.data.mybatis.config.mapper.MybatisProperties",
+      "description": "A Configuration object for customize default settings. If {@link #configLocation} is specified, this property is not used."
+    },
+    {
+      "name": "multi.mapper.mappers",
+      "type": "java.util.List<java.lang.Class>",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": ""
+    },
+    {
+      "name": "multi.mapper.identity",
+      "type": "java.lang.String",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "取回主键的方式."
+    },
+    {
+      "name": "multi.mapper.order",
+      "type": "java.lang.String",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "<selectKey> 中的 order 属性, 可选值为 BEFORE 和 AFTER."
+    },
+    {
+      "name": "multi.mapper.catalog",
+      "type": "java.lang.String",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "数据库的 catalog, 如果设置该值, 查询的时候表名会带 catalog 设置的前缀."
+    },
+    {
+      "name": "multi.mapper.schema",
+      "type": "java.lang.String",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "同 catalog, catalog 优先级高于 schema."
+    },
+    {
+      "name": "multi.mapper.not-empty",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "insertSelective 和 updateByPrimaryKeySelective 中, 是否判断字符串类型 !=''.",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.mapper.style",
+      "type": "java.lang.String",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "实体和表转换时的默认规则."
+    },
+    {
+      "name": "multi.mapper.enable-method-annotation",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "可以控制是否支持 (getter 和 setter) 在方法上使用注解, 默认false.",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.mapper.use-simple-type",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "默认 true, 启用后判断实体类属性是否为表字段时校验字段是否为简单类型, 如果不是就忽略该属性, 这个配置优先级高于所有注解.",
+      "defaultValue": true
+    },
+    {
+      "name": "multi.mapper.use-primitive-type",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "为了方便部分还在使用基本类型的实体, 增加了该属性, 只有配置该属性, 并且设置为 true 才会生效, 启用后，会扫描 8 种基本类型.",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.mapper.simple-types",
+      "type": "java.lang.String",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "默认的简单类型在 SimpleTypeUtil 中, 使用该参数可以增加额外的简单类型, 通过逗号隔开的全限定类名添加."
+    },
+    {
+      "name": "multi.mapper.enum-as-simple-type",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "用于配置是否将枚举类型当成基本类型对待.",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.mapper.wrap-keyword",
+      "type": "java.lang.String",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "配置后会自动处理关键字, 可以配的值和数据库有关."
+    },
+    {
+      "name": "multi.mapper.check-example-entity-class",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "默认 false, 用于校验通用 Example 构造参数 entityClass 是否和当前调用的 Mapper<EntityClass> 类型一致.",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.mapper.safe-delete",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "配置为 true 后, delete 和 deleteByExample 都必须设置查询条件才能删除, 否则会抛出异常.",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.mapper.safe-update",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "配置为 true 后, updateByExample 和 updateByExampleSelective 都必须设置查询条件才能删除, 否则会抛出异常 (org.apache.ibatis.exceptions.PersistenceException).",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.mapper.use-java-type",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.mapper.MapperProperties",
+      "description": "设置 true 时, 参数中会增加 javaType 设置, 如 {id, javaType=java.lang.Long}. 在 <resultMap> 中也会设置 javaType 属性.",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.pagehelper.offset-as-page-num",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.pagehelper.PageHelperProperties",
+      "description": "",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.pagehelper.row-bounds-with-count",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.pagehelper.PageHelperProperties",
+      "description": "",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.pagehelper.page-size-zero",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.pagehelper.PageHelperProperties",
+      "description": "",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.pagehelper.reasonable",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.pagehelper.PageHelperProperties",
+      "description": "",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.pagehelper.support-methods-arguments",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.pagehelper.PageHelperProperties",
+      "description": "",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.pagehelper.dialect",
+      "type": "java.lang.String",
+      "sourceType": "xxx.data.mybatis.config.pagehelper.PageHelperProperties",
+      "description": ""
+    },
+    {
+      "name": "multi.pagehelper.helper-dialect",
+      "type": "java.lang.String",
+      "sourceType": "xxx.data.mybatis.config.pagehelper.PageHelperProperties",
+      "description": ""
+    },
+    {
+      "name": "multi.pagehelper.auto-runtime-dialect",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.pagehelper.PageHelperProperties",
+      "description": "",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.pagehelper.close-conn",
+      "type": "java.lang.Boolean",
+      "sourceType": "xxx.data.mybatis.config.pagehelper.PageHelperProperties",
+      "description": "",
+      "defaultValue": false
+    },
+    {
+      "name": "multi.pagehelper.params",
+      "type": "java.lang.String",
+      "sourceType": "xxx.data.mybatis.config.pagehelper.PageHelperProperties",
+      "description": "",
+      "defaultValue": "pageNum=pageNum;pageSize=pageSize;count=countSql;reasonable=reasonable;pageSizeZero=pageSizeZero"
+    }
+  ],
+  "hints": [
+    {
+      "name": "multi.mapper.identity",
+      "values": [
+        {
+          "value": "DB2",
+          "description": "VALUES IDENTITY_VAL_LOCAL()."
+        },
+        {
+          "value": "MYSQL",
+          "description": "SELECT LAST_INSERT_ID()."
+        },
+        {
+          "value": "SQLSERVER",
+          "description": "SELECT SCOPE_IDENTITY()."
+        },
+        {
+          "value": "CLOUDSCAPE",
+          "description": "VALUES IDENTITY_VAL_LOCAL()."
+        },
+        {
+          "value": "DERBY",
+          "description": "VALUES IDENTITY_VAL_LOCAL()."
+        },
+        {
+          "value": "HSQLDB",
+          "description": "CALL IDENTITY()."
+        },
+        {
+          "value": "SYBASE",
+          "description": "SELECT @@IDENTITY."
+        },
+        {
+          "value": "DB2_MF",
+          "description": "SELECT IDENTITY_VAL_LOCAL() FROM SYSIBM.SYSDUMMY1."
+        },
+        {
+          "value": "INFORMIX",
+          "description": "select dbinfo('sqlca.sqlerrd1') from systables where tabid=1."
+        }
+      ]
+    },
+    {
+      "name": "multi.mapper.order",
+      "values": [
+        {
+          "value": "BEFORE"
+        },
+        {
+          "value": "AFTER"
+        }
+      ]
+    },
+    {
+      "name": "multi.mapper.style",
+      "values": [
+        {
+          "value": "normal",
+          "description": "原值."
+        },
+        {
+          "value": "camelhump",
+          "description": "驼峰转下划线."
+        },
+        {
+          "value": "uppercase",
+          "description": "转换为大写."
+        },
+        {
+          "value": "lowercase",
+          "description": "转换为小写."
+        },
+        {
+          "value": "camelhumpAndUppercase",
+          "description": "驼峰转下划线大写形式."
+        },
+        {
+          "value": "camelhumpAndLowercase",
+          "description": "驼峰转下划线小写形式."
+        }
+      ]
+    },
+    {
+      "name": "multi.pagehelper.helper-dialect",
+      "values": [
+        {
+          "value": "oracle",
+          "description": "Oracle"
+        },
+        {
+          "value": "mysql",
+          "description": "MySQL"
+        },
+        {
+          "value": "mariadb",
+          "description": "MariaDB"
+        },
+        {
+          "value": "sqlite",
+          "description": "Sqlite"
+        },
+        {
+          "value": "hsqldb",
+          "description": "HSQLDB"
+        },
+        {
+          "value": "postgresql",
+          "description": "PostgreSQL"
+        },
+        {
+          "value": "db2",
+          "description": "DB2"
+        },
+        {
+          "value": "sqlserver",
+          "description": "SQL Server"
+        },
+        {
+          "value": "informix",
+          "description": "IBM Informix"
+        },
+        {
+          "value": "h2",
+          "description": "H2"
+        },
+        {
+          "value": "sqlserver2012",
+          "description": "SQL Server 2012"
+        },
+        {
+          "value": "derby",
+          "description": "Derby"
+        }
+      ]
+    }
+  ]
+}

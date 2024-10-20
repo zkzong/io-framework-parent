@@ -1,0 +1,5 @@
+# Auto Configuration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+xxx.data.mybatis.config.DynamicDataSourceAutoConfiguration,\
+xxx.data.mybatis.config.pagehelper.PageHelperAutoConfiguration,\
+xxx.data.mybatis.config.mapper.MapperAutoConfiguration
