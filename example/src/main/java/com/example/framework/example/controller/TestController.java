@@ -28,9 +28,20 @@ public class TestController implements BaseController {
     @PostMapping("/post")
     public Resp<Req> post(@RequestBody @Validated Req req) {
         log.info("post");
-        Resp resp = new Resp();
-        resp.setData(req);
-        return resp;
+        return RespUtil.success(req);
+    }
+
+    /**
+     * post请求，入参使用@RequestParam
+     *
+     * @param name
+     * @param age
+     * @return
+     */
+    @PostMapping("/postParam")
+    public Resp<String> postParam(@RequestParam String name, @RequestParam Integer age) {
+        log.info("postParam");
+        return RespUtil.success("Hello World, name=" + name + ", age=" + age);
     }
 
     /**

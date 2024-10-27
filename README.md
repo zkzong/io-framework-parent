@@ -2,6 +2,8 @@
 
 ## core
 
+RestTemplate配置类
+
 ### aspect
 
 使用切面方式拦截请求日志

@@ -14,11 +14,11 @@ import java.math.BigDecimal;
 @ToString
 public class Req implements Serializable {
 
-    @NotBlank(message = "userId不能为空")
-    private String userId;
+    @NotBlank(message = "name不能为空")
+    private String name;
 
-    @NotNull(message = "money不能为空")
-    private Integer money;
+    @NotNull(message = "age不能为空")
+    private Integer age;
 
     @NotNull(message = "金额不能为空")
     @DecimalMin(value = "0.1")
