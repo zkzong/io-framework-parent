@@ -36,6 +36,11 @@ ExceptionController
 
 ### traceid
 
+Feign
+HttpClient
+Okhttp
+RestTemplate
+
 ### 统一返回结果
 
 Resp
