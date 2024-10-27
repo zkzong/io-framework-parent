@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @Author: zong
  * @Date: 2021/8/12
  */
-@RequestMapping("/demo")
+@RequestMapping("/test")
 public interface BaseController {
 
     @GetMapping("/getParam")

@@ -4,9 +4,7 @@ import com.example.framework.core.annotation.Delete;
 import com.example.framework.core.req.Req;
 import com.example.framework.core.resp.Resp;
 import com.example.framework.core.resp.RespUtil;
-import com.example.framework.example.service.DemoService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,9 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Slf4j
 public class TestController implements BaseController {
-
-    @Autowired
-    private DemoService demoService;
 
     /**
      * post请求，入参使用@RequestBody，且加校验
