@@ -32,7 +32,7 @@ ExceptionController
 
 ### apiversion
 
-通过注解修改uri请求路径
+通过注解修改uri请求路径(升級后不可使用，待修改)
 
 ### traceid
 
