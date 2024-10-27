@@ -3,17 +3,18 @@ package com.example.framework.example.controller;
 import com.example.framework.core.req.Req;
 import com.example.framework.core.resp.Resp;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.JdkClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +28,7 @@ import java.util.Map;
 @Slf4j
 public class RestTemplateController {
 
-    @Resource
+    @Autowired
     private RestTemplate restTemplate;
 
     /**
@@ -99,6 +100,8 @@ public class RestTemplateController {
         //headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
         //HttpEntity<Req> httpEntity = new HttpEntity<>(req, headers);
+
+        restTemplate = new RestTemplate(new JdkClientHttpRequestFactory());
         ResponseEntity<Resp> exchange = restTemplate.getForEntity("http://127.0.0.1:8888/test/getBody", Resp.class, req);
         return exchange.getBody();
     }

@@ -2,9 +2,9 @@ package com.example.framework.core.annotation.impl;
 
 import com.example.framework.core.annotation.IdentityCardNumber;
 import com.example.framework.core.utils.IdCardValidatorUtils;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 public class IdentityCardNumberValidator implements ConstraintValidator<IdentityCardNumber, String> {
 

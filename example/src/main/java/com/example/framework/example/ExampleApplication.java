@@ -3,8 +3,6 @@ package com.example.framework.example;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * @Author: zong
@@ -17,10 +15,4 @@ public class ExampleApplication {
         SpringApplication.run(ExampleApplication.class, args);
     }
 
-    @Bean
-    public RestTemplate restTemplate() {
-        RestTemplate restTemplate = new RestTemplate();
-        //restTemplate.setInterceptors(Arrays.asList(new RestTemplateTraceIdInterceptor()));
-        return restTemplate;
-    }
 }

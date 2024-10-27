@@ -2,12 +2,11 @@ package com.example.framework.core.trace.interceptor;
 
 import com.example.framework.core.trace.Constants;
 import com.example.framework.core.trace.util.TraceIdUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.MDC;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * 登陆拦截器，为所有请求添加一个traceId
