@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
  */
 @Slf4j
 @WebFilter(urlPatterns = "/*")
-public class DleteFilter implements Filter {
+public class DeleteFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         Filter.super.init(filterConfig);
