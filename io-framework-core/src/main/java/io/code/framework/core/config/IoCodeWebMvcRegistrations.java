@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 @Configuration
-public class ZWebMvcRegistrations implements WebMvcRegistrations {
+public class IoCodeWebMvcRegistrations implements WebMvcRegistrations {
 
     @Override
     public RequestMappingHandlerMapping getRequestMappingHandlerMapping() {
