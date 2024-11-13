@@ -37,6 +37,12 @@ public class OssController {
         return RespUtil.success(putObjectResult);
     }
 
+    @PostMapping("/putObjectRequest")
+    public Resp<PutObjectResult> putObjectRequest(String key, File file) {
+        PutObjectResult putObjectResult = ossService.putObjectRequest(key, file);
+        return RespUtil.success(putObjectResult);
+    }
+
     @PostMapping("/uploadFile")
     public Resp<UploadFileResult> uploadFile(String key, File file) {
         UploadFileResult uploadFileResult = null;

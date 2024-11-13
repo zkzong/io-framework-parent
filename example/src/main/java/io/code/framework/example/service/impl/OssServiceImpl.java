@@ -5,6 +5,7 @@ import com.aliyun.oss.model.DownloadFileRequest;
 import com.aliyun.oss.model.DownloadFileResult;
 import com.aliyun.oss.model.GeneratePresignedUrlRequest;
 import com.aliyun.oss.model.OSSObject;
+import com.aliyun.oss.model.PutObjectRequest;
 import com.aliyun.oss.model.PutObjectResult;
 import com.aliyun.oss.model.ResponseHeaderOverrides;
 import com.aliyun.oss.model.UploadFileRequest;
@@ -36,6 +37,13 @@ public class OssServiceImpl implements OssService {
     @Override
     public PutObjectResult putObject(String key, File file) {
         PutObjectResult putObjectResult = ossClient.putObject(ossProperties.getBucketName(), key, file);
+        return putObjectResult;
+    }
+
+    @Override
+    public PutObjectResult putObjectRequest(String key, File file) {
+        PutObjectRequest putObjectRequest = new PutObjectRequest(ossProperties.getBucketName(), key, file);
+        PutObjectResult putObjectResult = ossClient.putObject(putObjectRequest);
         return putObjectResult;
     }
 

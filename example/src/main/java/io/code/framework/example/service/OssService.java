@@ -17,6 +17,8 @@ public interface OssService {
 
     PutObjectResult putObject(String key, File file);
 
+    PutObjectResult putObjectRequest(String key, File file);
+
     UploadFileResult uploadFile(String key, File file) throws Throwable;
 
     OSSObject getObject(String key);
