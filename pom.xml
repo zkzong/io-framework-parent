@@ -19,6 +19,7 @@
     <modules>
         <module>io-framework-core</module>
         <module>io-framework-datasource</module>
+        <module>io-framework-oss</module>
 
         <module>example</module>
         <module>example-provider</module>
