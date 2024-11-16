@@ -46,6 +46,10 @@ RestTemplate
 Resp
 RespUtil
 
+## oss
+
+key是目录+文件名
+
 ## todo
 
 多数据源

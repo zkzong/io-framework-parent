@@ -6,7 +6,7 @@ import com.aliyun.oss.model.PutObjectResult;
 import com.aliyun.oss.model.UploadFileResult;
 import io.code.framework.core.resp.Resp;
 import io.code.framework.core.resp.RespUtil;
-import io.code.framework.example.service.OssService;
+import io.code.framework.oss.service.OssService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

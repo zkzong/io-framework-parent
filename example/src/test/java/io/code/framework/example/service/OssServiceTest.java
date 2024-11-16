@@ -4,6 +4,7 @@ import com.aliyun.oss.model.DownloadFileResult;
 import com.aliyun.oss.model.OSSObject;
 import com.aliyun.oss.model.PutObjectResult;
 import com.aliyun.oss.model.UploadFileResult;
+import io.code.framework.oss.service.OssService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

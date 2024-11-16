@@ -1,4 +1,4 @@
-package io.code.framework.example.service.impl;
+package io.code.framework.oss.service.impl;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.model.DownloadFileRequest;
@@ -10,7 +10,7 @@ import com.aliyun.oss.model.PutObjectResult;
 import com.aliyun.oss.model.ResponseHeaderOverrides;
 import com.aliyun.oss.model.UploadFileRequest;
 import com.aliyun.oss.model.UploadFileResult;
-import io.code.framework.example.service.OssService;
+import io.code.framework.oss.service.OssService;
 import io.code.framework.oss.config.OssProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
