@@ -34,14 +34,21 @@ public class OssServiceTest {
     }
 
     @Test
-    public void putObject_ValidFile_ReturnsNotNull() {
+    public void putObject() {
         PutObjectResult result = ossService.putObject("dev/testing/", file);
         System.out.println(result);
         assertNotNull(result);
     }
 
     @Test
-    public void uploadFile_ValidFile_ReturnsNotNull() {
+    public void putObjectRequest() {
+        PutObjectResult result = ossService.putObjectRequest("dev/testing/", file);
+        System.out.println(result);
+        assertNotNull(result);
+    }
+
+    @Test
+    public void uploadFile() {
         UploadFileResult result = null;
         try {
             result = ossService.uploadFile("test.txt", file);
@@ -52,13 +59,13 @@ public class OssServiceTest {
     }
 
     @Test
-    public void getObject_ValidKey_ReturnsNotNull() {
+    public void getObject() {
         OSSObject result = ossService.getObject("test.txt");
         assertNotNull(result);
     }
 
     @Test
-    public void downloadFile_ValidKey_ReturnsNotNull() {
+    public void downloadFile() {
         DownloadFileResult result = null;
         try {
             result = ossService.downloadFile("test.txt");
@@ -69,14 +76,14 @@ public class OssServiceTest {
     }
 
     @Test
-    public void generatePresignedUrl_ValidKeyAndDate_ReturnsNotNull() {
+    public void generatePresignedUrl() {
         Date expiration = new Date(new Date().getTime() + 3600 * 1000);
         URL url = ossService.generatePresignedUrl("test.txt", expiration);
         assertNotNull(url);
     }
 
     @Test
-    public void generatePresignedUrlContentType_ValidKeyAndDate_ReturnsNotNull() {
+    public void generatePresignedUrlcontentType() {
         Date expiration = new Date(new Date().getTime() + 3600 * 1000);
         URL url = ossService.generatePresignedUrlcontentType("test.txt", expiration);
         assertNotNull(url);
