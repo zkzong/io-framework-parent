@@ -36,10 +36,11 @@ ExceptionController
 
 ### traceid
 
-Feign
-HttpClient
-Okhttp
-RestTemplate
+-[x] Feign
+  - [x] FeignInterceptor
+-[ ] HttpClient
+-[ ] Okhttp
+-[ ] RestTemplate
 
 ### 统一返回结果
 
@@ -55,4 +56,5 @@ key是目录+文件名
 多数据源
 多租户
 core添加spring-cloud依赖
+DeleteInterceptor日志没有traceid
 
