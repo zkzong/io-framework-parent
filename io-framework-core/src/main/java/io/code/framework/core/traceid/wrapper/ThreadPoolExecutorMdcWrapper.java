@@ -1,6 +1,6 @@
-package io.code.framework.core.trace.wrapper;
+package io.code.framework.core.traceid.wrapper;
 
-import io.code.framework.core.trace.util.ThreadMdcUtil;
+import io.code.framework.core.traceid.util.ThreadMdcUtil;
 import org.slf4j.MDC;
 
 import java.util.concurrent.BlockingQueue;

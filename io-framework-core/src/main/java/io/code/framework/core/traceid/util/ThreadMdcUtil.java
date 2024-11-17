@@ -1,6 +1,6 @@
-package io.code.framework.core.trace.util;
+package io.code.framework.core.traceid.util;
 
-import io.code.framework.core.trace.Constants;
+import io.code.framework.core.traceid.Constants;
 import org.slf4j.MDC;
 
 import java.util.Map;

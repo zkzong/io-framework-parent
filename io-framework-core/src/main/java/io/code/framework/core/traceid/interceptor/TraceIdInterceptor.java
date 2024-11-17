@@ -1,7 +1,7 @@
-package io.code.framework.core.trace.interceptor;
+package io.code.framework.core.traceid.interceptor;
 
-import io.code.framework.core.trace.Constants;
-import io.code.framework.core.trace.util.TraceIdUtil;
+import io.code.framework.core.traceid.Constants;
+import io.code.framework.core.traceid.util.TraceIdUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.MDC;

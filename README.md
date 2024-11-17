@@ -40,6 +40,10 @@ ExceptionController
 -[ ] HttpClient
 -[ ] Okhttp
 -[ ] RestTemplate
+- [ ] WebClient
+- [ ] 多线程
+- [ ] 拦截器
+- [ ] rpc
 
 ### 统一返回结果
 

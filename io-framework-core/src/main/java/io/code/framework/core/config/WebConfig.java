@@ -1,6 +1,7 @@
 package io.code.framework.core.config;
 
 import io.code.framework.core.interceptor.DeleteInterceptor;
+import io.code.framework.core.traceid.interceptor.TraceIdInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -24,6 +25,10 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         // 放到工厂
         registry.addInterceptor(deleteInterceptor());
+
+        registry.addInterceptor(new TraceIdInterceptor()).addPathPatterns("/**");
+
         WebMvcConfigurer.super.addInterceptors(registry);
     }
+
 }

@@ -1,6 +1,6 @@
-package io.code.framework.core.trace.interceptor;
+package io.code.framework.core.traceid.interceptor;
 
-import io.code.framework.core.trace.Constants;
+import io.code.framework.core.traceid.Constants;
 import org.apache.http.HttpException;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpRequestInterceptor;

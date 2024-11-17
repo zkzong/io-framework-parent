@@ -1,6 +1,6 @@
-package io.code.framework.core.trace.interceptor;
+package io.code.framework.core.traceid.interceptor;
 
-import io.code.framework.core.trace.Constants;
+import io.code.framework.core.traceid.Constants;
 import org.slf4j.MDC;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;

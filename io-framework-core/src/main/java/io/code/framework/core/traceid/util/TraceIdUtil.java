@@ -1,4 +1,4 @@
-package io.code.framework.core.trace.util;
+package io.code.framework.core.traceid.util;
 
 import java.util.UUID;
 

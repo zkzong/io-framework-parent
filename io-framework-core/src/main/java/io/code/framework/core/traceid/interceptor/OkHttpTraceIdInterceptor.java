@@ -1,6 +1,6 @@
-package io.code.framework.core.trace.interceptor;
+package io.code.framework.core.traceid.interceptor;
 
-import io.code.framework.core.trace.Constants;
+import io.code.framework.core.traceid.Constants;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;

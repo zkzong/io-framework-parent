@@ -1,10 +1,13 @@
 package io.code.framework.core.config;
 
+import io.code.framework.core.traceid.interceptor.RestTemplateTraceIdInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Arrays;
 
 /**
  * RestTemplate配置类
@@ -17,7 +20,9 @@ public class RestTemplateConfig {
 
     @Bean
     public RestTemplate restTemplate(ClientHttpRequestFactory factory) {
-        return new RestTemplate(factory);
+        RestTemplate restTemplate = new RestTemplate(factory);
+        restTemplate.setInterceptors(Arrays.asList(new RestTemplateTraceIdInterceptor()));
+        return restTemplate;
     }
 
     @Bean
