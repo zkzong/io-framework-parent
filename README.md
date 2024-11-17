@@ -22,7 +22,6 @@ RestTemplate配置类
 2. 拦截器(Interceptor)：可以获取到执行的类名，方法名
 3. 切片(Aspect)可以获取到参数
 
-
 ### 统一异常处理
 
 GlobalExceptionHandler
@@ -57,4 +56,3 @@ key是目录+文件名
 多租户
 core添加spring-cloud依赖
 DeleteInterceptor日志没有traceid
-
