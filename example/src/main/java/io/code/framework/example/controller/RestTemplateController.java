@@ -89,7 +89,7 @@ public class RestTemplateController {
 
     /**
      * 使用RestTemplate发送get请求，请求参数为json格式
-     * 需要升級到spring 6以上，否则会报错
+     * 需要升级到spring 6以上，否则会报错
      * RestTemplate restTemplate = new RestTemplate(new JdkClientHttpRequestFactory());
      * https://stackoverflow.com/questions/62309635/resttemplate-get-with-body
      *

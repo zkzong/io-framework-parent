@@ -19,13 +19,13 @@ public class ConsumerController {
     private RestTemplate restTemplate;
 
     @RequestMapping("/sayHello/feign")
-    public String sayHello(@RequestParam String name) {
+    public String sayHelloFeign(@RequestParam String name) {
         log.info("name = {}", name);
         return providerClient.sayHello(name);
     }
 
     @RequestMapping("/sayHello/resttemplate")
-    public String sayHello1(@RequestParam String name) {
+    public String sayHelloRest(@RequestParam String name) {
         log.info("name = {}", name);
         return restTemplate.postForObject("http://127.0.0.1:8081/provider/sayHello?name={name}", null, String.class, name);
     }
