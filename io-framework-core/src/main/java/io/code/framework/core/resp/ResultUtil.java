@@ -8,7 +8,7 @@ import io.code.framework.core.StatusEnum;
  * @Author: zongz
  * @Date: 2024/9/26
  */
-public class RespUtil {
+public class ResultUtil {
 
     /**
      * 封装成功响应的方法
@@ -17,8 +17,8 @@ public class RespUtil {
      * @param <T>  响应数据类型
      * @return reponse
      */
-    public static <T> Resp<T> success(T data) {
-        Resp<T> response = new Resp<>();
+    public static <T> Result<T> success(T data) {
+        Result<T> response = new Result<>();
         response.setData(data);
         response.setCode(StatusEnum.SUCCESS.getCode());
         response.setMessage(StatusEnum.SUCCESS.getMessage());
@@ -32,7 +32,7 @@ public class RespUtil {
      * @param <T>
      * @return
      */
-    public static <T> Resp<T> fail(StatusEnum statusEnum) {
+    public static <T> Result<T> fail(StatusEnum statusEnum) {
         return fail(statusEnum.getCode(), statusEnum.getMessage());
     }
 
@@ -44,8 +44,8 @@ public class RespUtil {
      * @param <T>
      * @return
      */
-    public static <T> Resp<T> fail(String code, String message) {
-        Resp<T> response = new Resp<>();
+    public static <T> Result<T> fail(String code, String message) {
+        Result<T> response = new Result<>();
         response.setCode(code);
         response.setMessage(message);
         return response;

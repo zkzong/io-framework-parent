@@ -5,13 +5,11 @@ import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import lombok.ToString;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
-@ToString
 public class Req implements Serializable {
 
     @NotBlank(message = "name不能为空")

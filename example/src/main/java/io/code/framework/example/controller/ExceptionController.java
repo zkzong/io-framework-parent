@@ -1,7 +1,7 @@
 package io.code.framework.example.controller;
 
-import io.code.framework.core.resp.Resp;
-import io.code.framework.core.resp.RespUtil;
+import io.code.framework.core.resp.Result;
+import io.code.framework.core.resp.ResultUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,9 +21,9 @@ public class ExceptionController {
      * @return
      */
     @RequestMapping("/zero")
-    public Resp zero() {
+    public Result zero() {
         int i = 1 / 0;
-        return RespUtil.success("ok");
+        return ResultUtil.success("ok");
     }
 
 }

@@ -1,7 +1,7 @@
 package io.code.framework.core.exception;
 
-import io.code.framework.core.resp.Resp;
-import io.code.framework.core.resp.RespUtil;
+import io.code.framework.core.resp.Result;
+import io.code.framework.core.resp.ResultUtil;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.ValidationException;
 import org.slf4j.Logger;
@@ -34,70 +34,70 @@ public class GlobalExceptionHandler {
      * 处理自定义异常
      */
     @ExceptionHandler(BizException.class)
-    public Resp handleRRException(BizException e) {
+    public Result handleRRException(BizException e) {
         logger.error(e.getMessage(), e);
-        return RespUtil.fail(e.getCode(), e.getMessage());
+        return ResultUtil.fail(e.getCode(), e.getMessage());
     }
 
     @ExceptionHandler(BindException.class)
-    public Resp handleBindException(BindException e) {
+    public Result handleBindException(BindException e) {
         logger.error(e.getMessage(), e);
-        return RespUtil.fail(PARAM_FAIL_CODE, e.getMessage());
+        return ResultUtil.fail(PARAM_FAIL_CODE, e.getMessage());
     }
 
     /**
      * 方法参数校验
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Resp handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+    public Result handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         logger.error(e.getMessage(), e);
         // 按需重新封装需要返回的错误信息 解析原错误信息，封装后返回，此处返回非法的字段名称error.getField()，原始值error.getRejectedValue()，错误信息
         StringJoiner sj = new StringJoiner(";");
         e.getBindingResult().getFieldErrors().forEach(x -> sj.add(x.getDefaultMessage()));
-        return RespUtil.fail(PARAM_FAIL_CODE, sj.toString());
+        return ResultUtil.fail(PARAM_FAIL_CODE, sj.toString());
     }
 
     /**
      * ValidationException
      */
     @ExceptionHandler(ValidationException.class)
-    public Resp handleValidationException(ValidationException e) {
+    public Result handleValidationException(ValidationException e) {
         logger.error(e.getMessage(), e);
-        return RespUtil.fail(VALIDATION_CODE, e.getCause().getMessage());
+        return ResultUtil.fail(VALIDATION_CODE, e.getCause().getMessage());
     }
 
     /**
      * ConstraintViolationException
      */
     @ExceptionHandler(ConstraintViolationException.class)
-    public Resp handleConstraintViolationException(ConstraintViolationException e) {
+    public Result handleConstraintViolationException(ConstraintViolationException e) {
         logger.error(e.getMessage(), e);
         StringJoiner sj = new StringJoiner(";");
         e.getConstraintViolations().forEach(x -> sj.add(x.getMessageTemplate()));
-        return RespUtil.fail(PARAM_FAIL_CODE, sj.toString());
+        return ResultUtil.fail(PARAM_FAIL_CODE, sj.toString());
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
-    public Resp handlerNoFoundException(Exception e) {
+    public Result handlerNoFoundException(Exception e) {
         logger.error(e.getMessage(), e);
-        return RespUtil.fail("404", "路径不存在，请检查路径是否正确");
+        return ResultUtil.fail("404", "路径不存在，请检查路径是否正确");
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public Resp handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
+    public Result handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
         logger.error(e.getMessage(), e);
-        return RespUtil.fail(METHOD_NOT_SUPPORTED, "不支持'" + e.getMethod() + "'请求方法");
+        return ResultUtil.fail(METHOD_NOT_SUPPORTED, "不支持'" + e.getMethod() + "'请求方法");
     }
 
     @ExceptionHandler(DuplicateKeyException.class)
-    public Resp handleDuplicateKeyException(DuplicateKeyException e) {
+    public Result handleDuplicateKeyException(DuplicateKeyException e) {
         logger.error(e.getMessage(), e);
-        return RespUtil.fail(DUPLICATE_KEY_CODE, "数据重复，请检查后提交");
+        return ResultUtil.fail(DUPLICATE_KEY_CODE, "数据重复，请检查后提交");
     }
 
     @ExceptionHandler(Exception.class)
-    public Resp handleException(Exception e) {
+    public Result handleException(Exception e) {
         logger.error(e.getMessage(), e);
-        return RespUtil.fail("500", "系统繁忙，请稍后再试");
+        return ResultUtil.fail("500", "系统繁忙，请稍后再试");
     }
 }

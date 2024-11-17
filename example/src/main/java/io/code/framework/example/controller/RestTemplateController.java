@@ -2,6 +2,7 @@ package io.code.framework.example.controller;
 
 import io.code.framework.core.req.Req;
 import io.code.framework.core.resp.Resp;
+import io.code.framework.core.resp.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -40,22 +41,22 @@ public class RestTemplateController {
      * @return Resp
      */
     @RequestMapping("/post")
-    public Resp<Req> post(@RequestBody Req req) {
+    public Result<Resp> post(@RequestBody Req req) {
         log.info("req = {}", req);
 
         HttpEntity<Req> entity = new HttpEntity<>(req);
-        return restTemplate.postForObject("http://127.0.0.1:8888/test/post", entity, Resp.class);
+        return restTemplate.postForObject("http://127.0.0.1:8888/test/post", entity, Result.class);
     }
 
     @RequestMapping("/postParam")
-    public Resp<Req> postParam(@RequestParam String name, @RequestParam Integer age) {
+    public Result<Resp> postParam(@RequestParam String name, @RequestParam Integer age) {
         log.info("name = {}, age = {}", name, age);
 
         Map<String, Object> map = new HashMap<>();
         map.put("name", name);
         map.put("age", age);
 
-        return restTemplate.postForObject("http://127.0.0.1:8888/test/postParam?name={name}&age={age}", null, Resp.class, map);
+        return restTemplate.postForObject("http://127.0.0.1:8888/test/postParam?name={name}&age={age}", null, Result.class, map);
     }
 
     /**
@@ -66,25 +67,30 @@ public class RestTemplateController {
      * @return Resp
      */
     @RequestMapping("/getParam")
-    public Resp<String> getParam(@RequestParam String name, @RequestParam Integer age) {
+    public Result<String> getParam(@RequestParam String name, @RequestParam Integer age) {
         log.info("name = {}, age = {}", name, age);
 
         Map<String, Object> map = new HashMap<>();
         map.put("name", name);
         map.put("age", age);
 
-        return restTemplate.getForObject("http://127.0.0.1:8888/test/getParam?name={name}&age={age}", Resp.class, map);
+        return restTemplate.getForObject("http://127.0.0.1:8888/test/getParam?name={name}&age={age}", Result.class, map);
     }
 
+    /**
+     * @param name
+     * @param age
+     * @return
+     */
     @RequestMapping("/getForm")
-    public Resp<String> getForm(@RequestParam String name, @RequestParam Integer age) {
+    public Result<String> getForm(@RequestParam String name, @RequestParam Integer age) {
         log.info("name = {}, age = {}", name, age);
 
         Map<String, Object> map = new HashMap<>();
         map.put("name", name);
         map.put("age", age);
 
-        return restTemplate.getForObject("http://127.0.0.1:8888/test/getForm?name={name}&age={age}", Resp.class, map);
+        return restTemplate.getForObject("http://127.0.0.1:8888/test/getForm?name={name}&age={age}", Result.class, map);
     }
 
     /**
@@ -97,7 +103,7 @@ public class RestTemplateController {
      * @return Resp
      */
     @RequestMapping("/getBody")
-    public Resp<String> getBody(@RequestBody Req req) {
+    public Result<String> getBody(@RequestBody Req req) {
         log.info("req = {}", req);
 
         HttpHeaders headers = new HttpHeaders();
@@ -107,7 +113,7 @@ public class RestTemplateController {
         HttpEntity<Req> httpEntity = new HttpEntity<>(req, headers);
 
         RestTemplate restTemplate = new RestTemplate(new JdkClientHttpRequestFactory());
-        ResponseEntity<Resp> exchange = restTemplate.exchange("http://127.0.0.1:8888/test/getBody", HttpMethod.GET, httpEntity, Resp.class);
+        ResponseEntity<Result> exchange = restTemplate.exchange("http://127.0.0.1:8888/test/getBody", HttpMethod.GET, httpEntity, Result.class);
         return exchange.getBody();
     }
 

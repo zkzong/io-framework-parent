@@ -1,22 +1,17 @@
 package io.code.framework.core.resp;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Data
-@RequiredArgsConstructor
-@AllArgsConstructor
-public class Resp<T> implements Serializable {
+public class Resp implements Serializable {
 
-    private String code;
-    private String message;
-    private T data;
+    private String name;
 
-    public Resp(String code, String message) {
-        this.code = code;
-        this.message = message;
-    }
+    private Integer age;
+
+    private BigDecimal amount;
+
 }

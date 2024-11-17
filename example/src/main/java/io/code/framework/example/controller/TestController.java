@@ -3,8 +3,10 @@ package io.code.framework.example.controller;
 import io.code.framework.core.annotation.Delete;
 import io.code.framework.core.req.Req;
 import io.code.framework.core.resp.Resp;
-import io.code.framework.core.resp.RespUtil;
+import io.code.framework.core.resp.Result;
+import io.code.framework.core.resp.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,9 +28,11 @@ public class TestController implements BaseController {
      * @return
      */
     @PostMapping("/post")
-    public Resp<Req> post(@RequestBody @Validated Req req) {
+    public Result<Resp> post(@RequestBody @Validated Req req) {
         log.info("post");
-        return RespUtil.success(req);
+        Resp resp = new Resp();
+        BeanUtils.copyProperties(req, resp);
+        return ResultUtil.success(resp);
     }
 
     /**
@@ -39,9 +43,9 @@ public class TestController implements BaseController {
      * @return
      */
     @PostMapping("/postParam")
-    public Resp<String> postParam(@RequestParam String name, @RequestParam Integer age) {
+    public Result<String> postParam(@RequestParam String name, @RequestParam Integer age) {
         log.info("postParam");
-        return RespUtil.success("Hello World, name=" + name + ", age=" + age);
+        return ResultUtil.success("Hello World, name=" + name + ", age=" + age);
     }
 
     /**
@@ -53,9 +57,9 @@ public class TestController implements BaseController {
      */
     @Delete
     @Override
-    public Resp<String> getParam(@RequestParam String name, @RequestParam Integer age) {
+    public Result<String> getParam(@RequestParam String name, @RequestParam Integer age) {
         log.info("getParam");
-        return RespUtil.success("Hello World, name=" + name + ", age=" + age);
+        return ResultUtil.success("Hello World, name=" + name + ", age=" + age);
     }
 
     /**
@@ -65,9 +69,9 @@ public class TestController implements BaseController {
      * @return
      */
     @GetMapping("getForm")
-    public Resp<String> getForm(Req req) {
+    public Result<String> getForm(Req req) {
         log.info("getForm");
-        return RespUtil.success(req.toString());
+        return ResultUtil.success(req.toString());
     }
 
     /**
@@ -77,8 +81,8 @@ public class TestController implements BaseController {
      * @return
      */
     @GetMapping("getBody")
-    public Resp<String> getBody(@RequestBody Req req) {
+    public Result<String> getBody(@RequestBody Req req) {
         log.info("getBody");
-        return RespUtil.success(req.toString());
+        return ResultUtil.success(req.toString());
     }
 }

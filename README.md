@@ -35,11 +35,13 @@ ExceptionController
 
 ### traceid
 
--[x] Feign
+- [x] Feign
   - [x] FeignInterceptor
--[ ] HttpClient
--[ ] Okhttp
--[ ] RestTemplate
+- [ ] HttpClient
+- [ ] Okhttp
+- [x] RestTemplate
+  - [x] RestTemplateTraceIdInterceptor
+  - [x] RestTemplateConfig
 - [ ] WebClient
 - [ ] 多线程
 - [ ] 拦截器
