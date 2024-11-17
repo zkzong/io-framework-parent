@@ -45,7 +45,7 @@ public class RestTemplateController {
         log.info("req = {}", req);
 
         HttpEntity<Req> entity = new HttpEntity<>(req);
-        return restTemplate.postForObject("http://127.0.0.1:8888/test/post", entity, Result.class);
+        return restTemplate.postForObject("http://127.0.0.1:8080/test/post", entity, Result.class);
     }
 
     @RequestMapping("/postParam")
@@ -56,7 +56,7 @@ public class RestTemplateController {
         map.put("name", name);
         map.put("age", age);
 
-        return restTemplate.postForObject("http://127.0.0.1:8888/test/postParam?name={name}&age={age}", null, Result.class, map);
+        return restTemplate.postForObject("http://127.0.0.1:8080/test/postParam?name={name}&age={age}", null, Result.class, map);
     }
 
     /**
@@ -74,7 +74,7 @@ public class RestTemplateController {
         map.put("name", name);
         map.put("age", age);
 
-        return restTemplate.getForObject("http://127.0.0.1:8888/test/getParam?name={name}&age={age}", Result.class, map);
+        return restTemplate.getForObject("http://127.0.0.1:8080/test/getParam?name={name}&age={age}", Result.class, map);
     }
 
     /**
@@ -90,7 +90,7 @@ public class RestTemplateController {
         map.put("name", name);
         map.put("age", age);
 
-        return restTemplate.getForObject("http://127.0.0.1:8888/test/getForm?name={name}&age={age}", Result.class, map);
+        return restTemplate.getForObject("http://127.0.0.1:8080/test/getForm?name={name}&age={age}", Result.class, map);
     }
 
     /**
@@ -113,7 +113,7 @@ public class RestTemplateController {
         HttpEntity<Req> httpEntity = new HttpEntity<>(req, headers);
 
         RestTemplate restTemplate = new RestTemplate(new JdkClientHttpRequestFactory());
-        ResponseEntity<Result> exchange = restTemplate.exchange("http://127.0.0.1:8888/test/getBody", HttpMethod.GET, httpEntity, Result.class);
+        ResponseEntity<Result> exchange = restTemplate.exchange("http://127.0.0.1:8080/test/getBody", HttpMethod.GET, httpEntity, Result.class);
         return exchange.getBody();
     }
 

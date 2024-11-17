@@ -5,10 +5,7 @@ import io.code.framework.core.req.Req;
 import io.code.framework.core.resp.Resp;
 import io.code.framework.core.resp.Result;
 import lombok.extern.slf4j.Slf4j;
-import okhttp3.FormBody;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
+import okhttp3.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,11 +40,15 @@ public class OkHttpController {
         okhttp3.RequestBody body = okhttp3.RequestBody.create(MediaType.parse("application/json"), JSON.toJSONString(req));
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.1:8888/test/post")
+                .url("http://127.0.0.1:8080/test/post")
                 .post(body)
                 .build();
-        String resp = okHttpClient.newCall(request).execute().toString();
-        return JSON.parseObject(resp, Result.class);
+        Response response = okHttpClient.newCall(request).execute();
+        if (response.isSuccessful()) {
+            String s = response.body().string();
+            return JSON.parseObject(s, Result.class);
+        }
+        return null;
     }
 
     @RequestMapping("/postParam")
@@ -60,11 +61,15 @@ public class OkHttpController {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.1:8888/test/postParam?name={name}&age={age}")
+                .url("http://127.0.0.1:8080/test/postParam?name={name}&age={age}")
                 .post(body)
                 .build();
-        String resp = okHttpClient.newCall(request).execute().toString();
-        return JSON.parseObject(resp, Result.class);
+        Response response = okHttpClient.newCall(request).execute();
+        if (response.isSuccessful()) {
+            String s = response.body().string();
+            return JSON.parseObject(s, Result.class);
+        }
+        return null;
     }
 
     /**
@@ -85,11 +90,15 @@ public class OkHttpController {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.1:8888/test/getParam?name={name}&age={age}")
+                .url("http://127.0.0.1:8080/test/getParam?name={name}&age={age}")
                 .get().build();
 
-        String resp = okHttpClient.newCall(request).execute().toString();
-        return JSON.parseObject(resp, Result.class);
+        Response response = okHttpClient.newCall(request).execute();
+        if (response.isSuccessful()) {
+            String s = response.body().string();
+            return JSON.parseObject(s, Result.class);
+        }
+        return null;
     }
 
     @RequestMapping("/getForm")
@@ -103,11 +112,15 @@ public class OkHttpController {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.1:8888/test/getForm?name={name}&age={age}")
+                .url("http://127.0.0.1:8080/test/getForm?name={name}&age={age}")
                 .get().build();
 
-        String resp = okHttpClient.newCall(request).execute().toString();
-        return JSON.parseObject(resp, Result.class);
+        Response response = okHttpClient.newCall(request).execute();
+        if (response.isSuccessful()) {
+            String s = response.body().string();
+            return JSON.parseObject(s, Result.class);
+        }
+        return null;
     }
 
     /**
@@ -124,11 +137,15 @@ public class OkHttpController {
         okhttp3.RequestBody body = okhttp3.RequestBody.create(MediaType.parse("application/json"), JSON.toJSONString(req));
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.1:8888/test/getBody")
+                .url("http://127.0.0.1:8080/test/getBody")
                 .get().build();
 
-        String resp = okHttpClient.newCall(request).execute().toString();
-        return JSON.parseObject(resp, Result.class);
+        Response response = okHttpClient.newCall(request).execute();
+        if (response.isSuccessful()) {
+            String s = response.body().string();
+            return JSON.parseObject(s, Result.class);
+        }
+        return null;
     }
 
 }
