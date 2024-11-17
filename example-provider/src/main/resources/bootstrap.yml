@@ -1,12 +1,14 @@
+server:
+  port: 8081
+
 spring:
   application:
     name: example-provider
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
-server:
-  port: 8081
+        server-addr: 192.168.163.128:8848
+
 logging:
   level:
     root: debug

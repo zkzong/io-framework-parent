@@ -54,4 +54,5 @@ key是目录+文件名
 
 多数据源
 多租户
+core添加spring-cloud依赖
 
