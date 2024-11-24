@@ -1,8 +1,8 @@
 package io.code.framework.example.controller;
 
 import io.code.framework.core.annotation.ApiVersion;
-import io.code.framework.core.resp.Result;
-import io.code.framework.core.resp.ResultUtil;
+import io.code.framework.core.entity.ApiResponse;
+import io.code.framework.core.entity.ApiResponseUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiController {
 
     @GetMapping("/get")
-    public Result<String> get() {
+    public ApiResponse<String> get() {
         log.info("api get");
-        return ResultUtil.success("api");
+        return ApiResponseUtil.success("api");
     }
 
 }

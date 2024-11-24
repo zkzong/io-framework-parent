@@ -1,4 +1,4 @@
-package io.code.framework.core.req;
+package io.code.framework.example.entity.req;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
-public class Req implements Serializable {
+public class UserDto implements Serializable {
 
     @NotBlank(message = "name不能为空")
     private String name;

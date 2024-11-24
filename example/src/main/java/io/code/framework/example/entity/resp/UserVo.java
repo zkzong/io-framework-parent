@@ -1,4 +1,4 @@
-package io.code.framework.core.resp;
+package io.code.framework.example.entity.resp;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
-public class Resp implements Serializable {
+public class UserVo implements Serializable {
 
     private String name;
 

@@ -1,9 +1,9 @@
 package io.code.framework.example.controller;
 
 import com.alibaba.fastjson2.JSON;
-import io.code.framework.core.req.Req;
-import io.code.framework.core.resp.Resp;
-import io.code.framework.core.resp.Result;
+import io.code.framework.core.entity.ApiResponse;
+import io.code.framework.example.entity.req.UserDto;
+import io.code.framework.example.entity.resp.UserVo;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ public class OkHttpController {
      * @return Resp
      */
     @RequestMapping("/post")
-    public Result<Resp> post(@RequestBody Req req) throws IOException {
+    public ApiResponse<UserVo> post(@RequestBody UserDto req) throws IOException {
         log.info("req = {}", req);
 
         okhttp3.RequestBody body = okhttp3.RequestBody.create(MediaType.parse("application/json"), JSON.toJSONString(req));
@@ -46,13 +46,13 @@ public class OkHttpController {
         Response response = okHttpClient.newCall(request).execute();
         if (response.isSuccessful()) {
             String s = response.body().string();
-            return JSON.parseObject(s, Result.class);
+            return JSON.parseObject(s, ApiResponse.class);
         }
         return null;
     }
 
     @RequestMapping("/postParam")
-    public Result<Resp> postParam(@RequestParam String name, @RequestParam Integer age) throws IOException {
+    public ApiResponse<UserVo> postParam(@RequestParam String name, @RequestParam Integer age) throws IOException {
         log.info("name = {}, age = {}", name, age);
 
         okhttp3.RequestBody body = new FormBody.Builder()
@@ -67,7 +67,7 @@ public class OkHttpController {
         Response response = okHttpClient.newCall(request).execute();
         if (response.isSuccessful()) {
             String s = response.body().string();
-            return JSON.parseObject(s, Result.class);
+            return JSON.parseObject(s, ApiResponse.class);
         }
         return null;
     }
@@ -80,7 +80,7 @@ public class OkHttpController {
      * @return Resp
      */
     @RequestMapping("/getParam")
-    public Result<String> getParam(@RequestParam String name, @RequestParam Integer age) throws IOException {
+    public ApiResponse<String> getParam(@RequestParam String name, @RequestParam Integer age) throws IOException {
         log.info("name = {}, age = {}", name, age);
 
         // todo 待完善
@@ -96,13 +96,13 @@ public class OkHttpController {
         Response response = okHttpClient.newCall(request).execute();
         if (response.isSuccessful()) {
             String s = response.body().string();
-            return JSON.parseObject(s, Result.class);
+            return JSON.parseObject(s, ApiResponse.class);
         }
         return null;
     }
 
     @RequestMapping("/getForm")
-    public Result<String> getForm(@RequestParam String name, @RequestParam Integer age) throws IOException {
+    public ApiResponse<String> getForm(@RequestParam String name, @RequestParam Integer age) throws IOException {
         log.info("name = {}, age = {}", name, age);
 
         // todo 待完善
@@ -118,7 +118,7 @@ public class OkHttpController {
         Response response = okHttpClient.newCall(request).execute();
         if (response.isSuccessful()) {
             String s = response.body().string();
-            return JSON.parseObject(s, Result.class);
+            return JSON.parseObject(s, ApiResponse.class);
         }
         return null;
     }
@@ -130,7 +130,7 @@ public class OkHttpController {
      * @return Resp
      */
     @RequestMapping("/getBody")
-    public Result<String> getBody(@RequestBody Req req) throws IOException {
+    public ApiResponse<String> getBody(@RequestBody UserDto req) throws IOException {
         log.info("req = {}", req);
 
         // todo 待完善
@@ -143,7 +143,7 @@ public class OkHttpController {
         Response response = okHttpClient.newCall(request).execute();
         if (response.isSuccessful()) {
             String s = response.body().string();
-            return JSON.parseObject(s, Result.class);
+            return JSON.parseObject(s, ApiResponse.class);
         }
         return null;
     }

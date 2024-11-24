@@ -1,18 +1,14 @@
 package io.code.framework.example.controller;
 
 import io.code.framework.core.annotation.Delete;
-import io.code.framework.core.req.Req;
-import io.code.framework.core.resp.Resp;
-import io.code.framework.core.resp.Result;
-import io.code.framework.core.resp.ResultUtil;
+import io.code.framework.core.entity.ApiResponse;
+import io.code.framework.core.entity.ApiResponseUtil;
+import io.code.framework.example.entity.req.UserDto;
+import io.code.framework.example.entity.resp.UserVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 测试类
@@ -28,11 +24,11 @@ public class TestController implements BaseController {
      * @return
      */
     @PostMapping("/post")
-    public Result<Resp> post(@RequestBody @Validated Req req) {
+    public ApiResponse<UserVo> post(@RequestBody @Validated UserDto req) {
         log.info("post");
-        Resp resp = new Resp();
+        UserVo resp = new UserVo();
         BeanUtils.copyProperties(req, resp);
-        return ResultUtil.success(resp);
+        return ApiResponseUtil.success(resp);
     }
 
     /**
@@ -43,9 +39,9 @@ public class TestController implements BaseController {
      * @return
      */
     @PostMapping("/postParam")
-    public Result<String> postParam(@RequestParam String name, @RequestParam Integer age) {
+    public ApiResponse<String> postParam(@RequestParam String name, @RequestParam Integer age) {
         log.info("postParam");
-        return ResultUtil.success("Hello World, name=" + name + ", age=" + age);
+        return ApiResponseUtil.success("Hello World, name=" + name + ", age=" + age);
     }
 
     /**
@@ -57,9 +53,9 @@ public class TestController implements BaseController {
      */
     @Delete
     @Override
-    public Result<String> getParam(@RequestParam String name, @RequestParam Integer age) {
+    public ApiResponse<String> getParam(@RequestParam String name, @RequestParam Integer age) {
         log.info("getParam");
-        return ResultUtil.success("Hello World, name=" + name + ", age=" + age);
+        return ApiResponseUtil.success("Hello World, name=" + name + ", age=" + age);
     }
 
     /**
@@ -69,9 +65,9 @@ public class TestController implements BaseController {
      * @return
      */
     @GetMapping("getForm")
-    public Result<String> getForm(Req req) {
+    public ApiResponse<String> getForm(UserDto req) {
         log.info("getForm");
-        return ResultUtil.success(req.toString());
+        return ApiResponseUtil.success(req.toString());
     }
 
     /**
@@ -81,8 +77,8 @@ public class TestController implements BaseController {
      * @return
      */
     @GetMapping("getBody")
-    public Result<String> getBody(@RequestBody Req req) {
+    public ApiResponse<String> getBody(@RequestBody UserDto req) {
         log.info("getBody");
-        return ResultUtil.success(req.toString());
+        return ApiResponseUtil.success(req.toString());
     }
 }

@@ -1,7 +1,7 @@
 package io.code.framework.core.exception;
 
-import io.code.framework.core.resp.Result;
-import io.code.framework.core.resp.ResultUtil;
+import io.code.framework.core.entity.ApiResponse;
+import io.code.framework.core.entity.ApiResponseUtil;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.ValidationException;
 import org.slf4j.Logger;
@@ -34,70 +34,70 @@ public class GlobalExceptionHandler {
      * 处理自定义异常
      */
     @ExceptionHandler(BizException.class)
-    public Result handleRRException(BizException e) {
+    public ApiResponse handleRRException(BizException e) {
         logger.error(e.getMessage(), e);
-        return ResultUtil.fail(e.getCode(), e.getMessage());
+        return ApiResponseUtil.fail(e.getCode(), e.getMessage());
     }
 
     @ExceptionHandler(BindException.class)
-    public Result handleBindException(BindException e) {
+    public ApiResponse handleBindException(BindException e) {
         logger.error(e.getMessage(), e);
-        return ResultUtil.fail(PARAM_FAIL_CODE, e.getMessage());
+        return ApiResponseUtil.fail(PARAM_FAIL_CODE, e.getMessage());
     }
 
     /**
      * 方法参数校验
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Result handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+    public ApiResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         logger.error(e.getMessage(), e);
         // 按需重新封装需要返回的错误信息 解析原错误信息，封装后返回，此处返回非法的字段名称error.getField()，原始值error.getRejectedValue()，错误信息
         StringJoiner sj = new StringJoiner(";");
         e.getBindingResult().getFieldErrors().forEach(x -> sj.add(x.getDefaultMessage()));
-        return ResultUtil.fail(PARAM_FAIL_CODE, sj.toString());
+        return ApiResponseUtil.fail(PARAM_FAIL_CODE, sj.toString());
     }
 
     /**
      * ValidationException
      */
     @ExceptionHandler(ValidationException.class)
-    public Result handleValidationException(ValidationException e) {
+    public ApiResponse handleValidationException(ValidationException e) {
         logger.error(e.getMessage(), e);
-        return ResultUtil.fail(VALIDATION_CODE, e.getCause().getMessage());
+        return ApiResponseUtil.fail(VALIDATION_CODE, e.getCause().getMessage());
     }
 
     /**
      * ConstraintViolationException
      */
     @ExceptionHandler(ConstraintViolationException.class)
-    public Result handleConstraintViolationException(ConstraintViolationException e) {
+    public ApiResponse handleConstraintViolationException(ConstraintViolationException e) {
         logger.error(e.getMessage(), e);
         StringJoiner sj = new StringJoiner(";");
         e.getConstraintViolations().forEach(x -> sj.add(x.getMessageTemplate()));
-        return ResultUtil.fail(PARAM_FAIL_CODE, sj.toString());
+        return ApiResponseUtil.fail(PARAM_FAIL_CODE, sj.toString());
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
-    public Result handlerNoFoundException(Exception e) {
+    public ApiResponse handlerNoFoundException(Exception e) {
         logger.error(e.getMessage(), e);
-        return ResultUtil.fail("404", "路径不存在，请检查路径是否正确");
+        return ApiResponseUtil.fail("404", "路径不存在，请检查路径是否正确");
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public Result handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
+    public ApiResponse handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
         logger.error(e.getMessage(), e);
-        return ResultUtil.fail(METHOD_NOT_SUPPORTED, "不支持'" + e.getMethod() + "'请求方法");
+        return ApiResponseUtil.fail(METHOD_NOT_SUPPORTED, "不支持'" + e.getMethod() + "'请求方法");
     }
 
     @ExceptionHandler(DuplicateKeyException.class)
-    public Result handleDuplicateKeyException(DuplicateKeyException e) {
+    public ApiResponse handleDuplicateKeyException(DuplicateKeyException e) {
         logger.error(e.getMessage(), e);
-        return ResultUtil.fail(DUPLICATE_KEY_CODE, "数据重复，请检查后提交");
+        return ApiResponseUtil.fail(DUPLICATE_KEY_CODE, "数据重复，请检查后提交");
     }
 
     @ExceptionHandler(Exception.class)
-    public Result handleException(Exception e) {
+    public ApiResponse handleException(Exception e) {
         logger.error(e.getMessage(), e);
-        return ResultUtil.fail("500", "系统繁忙，请稍后再试");
+        return ApiResponseUtil.fail("500", "系统繁忙，请稍后再试");
     }
 }

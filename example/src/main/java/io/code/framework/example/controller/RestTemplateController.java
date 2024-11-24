@@ -1,15 +1,11 @@
 package io.code.framework.example.controller;
 
-import io.code.framework.core.req.Req;
-import io.code.framework.core.resp.Resp;
-import io.code.framework.core.resp.Result;
+import io.code.framework.core.entity.ApiResponse;
+import io.code.framework.example.entity.req.UserDto;
+import io.code.framework.example.entity.resp.UserVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.http.client.JdkClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,22 +37,22 @@ public class RestTemplateController {
      * @return Resp
      */
     @RequestMapping("/post")
-    public Result<Resp> post(@RequestBody Req req) {
+    public ApiResponse<UserVo> post(@RequestBody UserDto req) {
         log.info("req = {}", req);
 
-        HttpEntity<Req> entity = new HttpEntity<>(req);
-        return restTemplate.postForObject("http://127.0.0.1:8080/test/post", entity, Result.class);
+        HttpEntity<UserDto> entity = new HttpEntity<>(req);
+        return restTemplate.postForObject("http://127.0.0.1:8080/test/post", entity, ApiResponse.class);
     }
 
     @RequestMapping("/postParam")
-    public Result<Resp> postParam(@RequestParam String name, @RequestParam Integer age) {
+    public ApiResponse<UserVo> postParam(@RequestParam String name, @RequestParam Integer age) {
         log.info("name = {}, age = {}", name, age);
 
         Map<String, Object> map = new HashMap<>();
         map.put("name", name);
         map.put("age", age);
 
-        return restTemplate.postForObject("http://127.0.0.1:8080/test/postParam?name={name}&age={age}", null, Result.class, map);
+        return restTemplate.postForObject("http://127.0.0.1:8080/test/postParam?name={name}&age={age}", null, ApiResponse.class, map);
     }
 
     /**
@@ -67,14 +63,14 @@ public class RestTemplateController {
      * @return Resp
      */
     @RequestMapping("/getParam")
-    public Result<String> getParam(@RequestParam String name, @RequestParam Integer age) {
+    public ApiResponse<String> getParam(@RequestParam String name, @RequestParam Integer age) {
         log.info("name = {}, age = {}", name, age);
 
         Map<String, Object> map = new HashMap<>();
         map.put("name", name);
         map.put("age", age);
 
-        return restTemplate.getForObject("http://127.0.0.1:8080/test/getParam?name={name}&age={age}", Result.class, map);
+        return restTemplate.getForObject("http://127.0.0.1:8080/test/getParam?name={name}&age={age}", ApiResponse.class, map);
     }
 
     /**
@@ -83,14 +79,14 @@ public class RestTemplateController {
      * @return
      */
     @RequestMapping("/getForm")
-    public Result<String> getForm(@RequestParam String name, @RequestParam Integer age) {
+    public ApiResponse<String> getForm(@RequestParam String name, @RequestParam Integer age) {
         log.info("name = {}, age = {}", name, age);
 
         Map<String, Object> map = new HashMap<>();
         map.put("name", name);
         map.put("age", age);
 
-        return restTemplate.getForObject("http://127.0.0.1:8080/test/getForm?name={name}&age={age}", Result.class, map);
+        return restTemplate.getForObject("http://127.0.0.1:8080/test/getForm?name={name}&age={age}", ApiResponse.class, map);
     }
 
     /**
@@ -103,17 +99,17 @@ public class RestTemplateController {
      * @return Resp
      */
     @RequestMapping("/getBody")
-    public Result<String> getBody(@RequestBody Req req) {
+    public ApiResponse<String> getBody(@RequestBody UserDto req) {
         log.info("req = {}", req);
 
         HttpHeaders headers = new HttpHeaders();
         // 设置请求头为json格式
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<Req> httpEntity = new HttpEntity<>(req, headers);
+        HttpEntity<UserDto> httpEntity = new HttpEntity<>(req, headers);
 
         RestTemplate restTemplate = new RestTemplate(new JdkClientHttpRequestFactory());
-        ResponseEntity<Result> exchange = restTemplate.exchange("http://127.0.0.1:8080/test/getBody", HttpMethod.GET, httpEntity, Result.class);
+        ResponseEntity<ApiResponse> exchange = restTemplate.exchange("http://127.0.0.1:8080/test/getBody", HttpMethod.GET, httpEntity, ApiResponse.class);
         return exchange.getBody();
     }
 
