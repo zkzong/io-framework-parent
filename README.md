@@ -54,7 +54,7 @@ RespUtil
 
 ## oss
 
-key是目录+文件名
+**key**是**目录+文件名**
 
 ## todo
 
@@ -62,3 +62,4 @@ key是目录+文件名
 多租户
 core添加spring-cloud依赖
 DeleteInterceptor日志没有traceid
+通用加解密
