@@ -1,4 +1,4 @@
-package io.code.framework.example.controller;
+package io.code.framework.example.controller.http;
 
 import com.alibaba.fastjson2.JSON;
 import io.code.framework.core.entity.ApiResponse;

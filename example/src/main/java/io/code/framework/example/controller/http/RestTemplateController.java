@@ -1,4 +1,4 @@
-package io.code.framework.example.controller;
+package io.code.framework.example.controller.http;
 
 import io.code.framework.core.entity.ApiResponse;
 import io.code.framework.example.entity.req.UserDto;
