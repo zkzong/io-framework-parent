@@ -8,6 +8,7 @@ import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBo
 
 import java.io.OutputStream;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.IntStream;
 
@@ -20,7 +21,6 @@ import java.util.stream.IntStream;
 public class FileController {
 
     /***
-     * todo 文件乱码
      * 通过流式处理方式，能够显著优化导出性能
      */
     @GetMapping("/export")
@@ -30,11 +30,11 @@ public class FileController {
                 URLEncoder.encode("导出数据_" + System.currentTimeMillis() + ".csv", StandardCharsets.UTF_8));
         StreamingResponseBody stream = outputStream -> {
             String header = "ID,名称,描述\n";
-            outputStream.write(header.getBytes(StandardCharsets.UTF_8));
+            outputStream.write(header.getBytes(Charset.forName("GBK")));
             IntStream.range(1, 10001).forEach(i -> {
                 try {
                     String row = i + ",名称" + i + ",描述" + i + "\n";
-                    outputStream.write(row.getBytes(StandardCharsets.UTF_8));
+                    outputStream.write(row.getBytes(Charset.forName("GBK")));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
