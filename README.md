@@ -56,10 +56,14 @@ ApiResponseUtil
 
 **key**是**目录+文件名**
 
+## fastexcel
+
+- [ ] 动态列
+
 ## todo
 
-多数据源
-多租户
-core添加spring-cloud依赖
-DeleteInterceptor日志没有traceid
-通用加解密
+- [ ] 多数据源
+- [ ] 多租户
+- [ ] core添加spring-cloud依赖
+- [ ] DeleteInterceptor日志没有traceid
+- [ ] 通用加解密
