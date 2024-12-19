@@ -3,8 +3,6 @@ package io.code.framework.example.spring.util;
 import io.code.framework.example.spring.util.entity.Less;
 import io.code.framework.example.spring.util.entity.More;
 import io.code.framework.example.spring.util.entity.Person;
-import io.code.framework.example.spring.util.entity.UserOne;
-import io.code.framework.example.spring.util.entity.UserTwo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
@@ -28,6 +26,16 @@ public class BeanUtilsTest {
         Less less = new Less();
         BeanUtils.copyProperties(more, less);
         System.out.println(less);
+
+        // todo 属性值少的复制给属性值多的，没有被复制到的属性就是该类型的默认值。 结果1......xy......null
+
+        // null覆盖有值字段
+        More more1 = new More(1, "zong", 1, "1", 100L);
+        System.out.println(more1);
+        Less less1 = new Less();
+        BeanUtils.copyProperties(less1, more1);
+        System.out.println(more1);
+
     }
 
     @Test
@@ -52,7 +60,6 @@ public class BeanUtilsTest {
             tList.add(p);
         }
         System.out.println(tList.size());
-
     }
 
     @Test
@@ -76,7 +83,6 @@ public class BeanUtilsTest {
         System.out.println("p2 = " + p2);
     }
 
-
     public String[] getNullPropertyNames(Object source) {
         BeanWrapper src = new BeanWrapperImpl(source);
         PropertyDescriptor[] pds = src.getPropertyDescriptors();
@@ -92,36 +98,4 @@ public class BeanUtilsTest {
         return emptyNames.toArray(result);
     }
 
-    // null覆盖有值字段
-    @Test
-    public void nullcopy() {
-        More more = new More(1, "zong", 1, "1", 100L);
-        System.out.println(more);
-        Less less = new Less();
-        BeanUtils.copyProperties(less, more);
-        System.out.println(more);
-    }
-
-    // 属性值多的复制给属性值少的。结果1......xy
-    @Test
-    public void moreToLess() {
-        UserTwo u2 = new UserTwo();
-        u2.setId(1);
-        u2.setName("xy");
-        u2.setAddress("aa");
-        UserOne u1 = new UserOne();
-        BeanUtils.copyProperties(u2, u1);
-        System.out.println(u1);
-    }
-
-    // 属性值少的复制给属性值多的，没有被复制到的属性就是该类型的默认值。 结果1......xy......null
-    @Test
-    public void lessToMore() {
-        UserOne u1 = new UserOne();
-        u1.setId(1);
-        u1.setName("xy");
-        UserTwo u2 = new UserTwo();
-        BeanUtils.copyProperties(u1, u2);
-        System.out.println(u2);
-    }
 }
