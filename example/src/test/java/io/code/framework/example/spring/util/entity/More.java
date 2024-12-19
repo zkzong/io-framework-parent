@@ -16,5 +16,6 @@ public class More {
     private String name;
     private Integer age;
     private String sex;
+    private Long amount;
 
 }

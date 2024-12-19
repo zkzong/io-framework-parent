@@ -1,6 +1,6 @@
 package io.code.framework.example.spring.util;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.util.StopWatch;
 
 public class StopWatchTest {
@@ -9,7 +9,7 @@ public class StopWatchTest {
     public void getTotalTimeMillis() throws InterruptedException {
         StopWatch sw = new StopWatch();
         sw.start();
-        //long task simulation
+        // long task simulation
         Thread.sleep(1000);
         sw.stop();
         System.out.println(sw.getTotalTimeMillis());
@@ -18,8 +18,9 @@ public class StopWatchTest {
     @Test
     public void getLastTaskTimeMillis() throws InterruptedException {
         StopWatch sw = new StopWatch();
-        sw.start("A");//setting a task name
-        //long task simulation
+        // setting a task name
+        sw.start("A");
+        // long task simulation
         Thread.sleep(1000);
         sw.stop();
         System.out.println(sw.getLastTaskTimeMillis());

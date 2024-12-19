@@ -1,22 +1,15 @@
 package io.code.framework.example.spring.util.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-/**
- * Created by zong on 2017/2/24.
- */
 @Data
+@NoArgsConstructor
 public class Less {
+
     private Integer id;
     private String name;
     private Integer sex;
-
-    public Less() {
-    }
-
-    public Less(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    private long amount;
 
 }
