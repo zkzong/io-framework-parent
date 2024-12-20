@@ -13,16 +13,19 @@ public class StringUtilsTest {
     public void test() {
         String s = "";
         String ss = " ";
+
         boolean b = StringUtils.isEmpty(s);
         boolean bb = StringUtils.isEmpty(ss);
         System.out.println(b);
         System.out.println(bb);
 
+        // 类似isNotEmpty
         b = StringUtils.hasLength(s);
         bb = StringUtils.hasLength(ss);
         System.out.println(b);
         System.out.println(bb);
 
+        // 类似isNotBlank
         b = StringUtils.hasText(s);
         bb = StringUtils.hasText(ss);
         System.out.println(b);
