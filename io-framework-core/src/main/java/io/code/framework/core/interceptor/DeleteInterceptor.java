@@ -32,7 +32,7 @@ public class DeleteInterceptor implements HandlerInterceptor {
                 String name = parameterNames.nextElement();
                 String[] parameterValues = request.getParameterValues(name);
                 log.info("{} = {}", name, parameterValues);
-                System.out.println(name + " " + parameterValues[0]);
+                log.info(name + " " + parameterValues[0]);
             }
 
             annotation = handlerMethod.getMethodAnnotation(Delete.class);

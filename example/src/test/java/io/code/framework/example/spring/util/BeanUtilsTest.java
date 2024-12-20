@@ -15,12 +15,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class BeanUtilsTest {
+class BeanUtilsTest {
 
     // 字段类型不一样不能赋值
     // 原生类型和包装类型可以赋值
     @Test
-    public void test() {
+    void test() {
         More more = new More(1, "zong", 1, "1", 100L);
         System.out.println(more);
         Less less = new Less();
@@ -39,7 +39,7 @@ public class BeanUtilsTest {
     }
 
     @Test
-    public void list2list() throws InvocationTargetException, IllegalAccessException {
+    void list2list() throws InvocationTargetException, IllegalAccessException {
         Person p1 = new Person("zong", 30);
         Person p2 = new Person("ma", 25);
         Person p3 = new Person("liu", 20);
@@ -63,7 +63,7 @@ public class BeanUtilsTest {
     }
 
     @Test
-    public void nullProperty() {
+    void nullProperty() {
         Person p1 = new Person();
         p1.setName("");
         p1.setAge(10);
