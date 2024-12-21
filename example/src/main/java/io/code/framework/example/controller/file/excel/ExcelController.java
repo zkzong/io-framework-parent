@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,7 +22,7 @@ import java.io.IOException;
 public class ExcelController {
 
     @PostMapping(value = "/import")
-    public List<ImportModel> read(MultipartFile excel) throws IOException {
+    public List<ImportModel> read(@RequestParam("excel") MultipartFile excel) throws IOException {
         return ExcelUtil.readExcel(excel.getInputStream(), excel.getOriginalFilename(), ImportModel.class);
     }
 
