@@ -64,7 +64,7 @@ public class TestController implements BaseController {
      * @param req
      * @return
      */
-    @GetMapping("getForm")
+    @GetMapping("/getForm")
     public ApiResponse<String> getForm(UserDto req) {
         log.info("getForm");
         return ApiResponseUtil.success(req.toString());
@@ -76,9 +76,15 @@ public class TestController implements BaseController {
      * @param req
      * @return
      */
-    @GetMapping("getBody")
+    @GetMapping("/getBody")
     public ApiResponse<String> getBody(@RequestBody UserDto req) {
         log.info("getBody");
         return ApiResponseUtil.success(req.toString());
+    }
+
+    // todo
+    @PostMapping("/path/{name}")
+    public ApiResponse<String> path(@PathVariable String name) {
+        return ApiResponseUtil.success(name);
     }
 }
