@@ -2,10 +2,14 @@ package io.code.framework.example.http;
 
 import com.alibaba.fastjson2.JSON;
 import io.code.framework.core.entity.ApiResponse;
-import io.code.framework.example.demo.controller.entity.req.UserDto;
-import io.code.framework.example.demo.controller.entity.resp.UserVo;
+import io.code.framework.example.demo.entity.req.UserDto;
+import io.code.framework.example.demo.entity.resp.UserVo;
 import lombok.extern.slf4j.Slf4j;
-import okhttp3.*;
+import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

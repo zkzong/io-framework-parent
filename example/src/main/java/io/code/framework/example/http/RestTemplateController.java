@@ -1,11 +1,15 @@
 package io.code.framework.example.http;
 
 import io.code.framework.core.entity.ApiResponse;
-import io.code.framework.example.demo.controller.entity.req.UserDto;
-import io.code.framework.example.demo.controller.entity.resp.UserVo;
+import io.code.framework.example.demo.entity.req.UserDto;
+import io.code.framework.example.demo.entity.resp.UserVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.JdkClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
