@@ -1,4 +1,4 @@
-package io.code.framework.example.entity.resp;
+package io.code.framework.example.demo.entity.resp;
 
 import lombok.Data;
 

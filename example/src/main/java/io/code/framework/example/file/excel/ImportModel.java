@@ -1,4 +1,4 @@
-package io.code.framework.example.controller.file.excel;
+package io.code.framework.example.file.excel;
 
 import cn.idev.excel.annotation.ExcelProperty;
 import lombok.Data;

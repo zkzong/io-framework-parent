@@ -1,4 +1,4 @@
-package io.code.framework.example.controller;
+package io.code.framework.example.demo.controller;
 
 import io.code.framework.core.annotation.ApiVersion;
 import io.code.framework.core.entity.ApiResponse;

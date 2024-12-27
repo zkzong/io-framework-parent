@@ -1,4 +1,4 @@
-package io.code.framework.example.service;
+package io.code.framework.example.demo.service;
 
 /**
  * @Author: zong

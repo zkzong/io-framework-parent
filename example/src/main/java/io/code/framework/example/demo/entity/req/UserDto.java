@@ -1,4 +1,4 @@
-package io.code.framework.example.entity.req;
+package io.code.framework.example.demo.entity.req;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;

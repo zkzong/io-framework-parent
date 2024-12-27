@@ -1,14 +1,19 @@
-package io.code.framework.example.controller;
+package io.code.framework.example.demo.controller;
 
 import io.code.framework.core.annotation.Delete;
 import io.code.framework.core.entity.ApiResponse;
 import io.code.framework.core.entity.ApiResponseUtil;
-import io.code.framework.example.entity.req.UserDto;
-import io.code.framework.example.entity.resp.UserVo;
+import io.code.framework.example.demo.entity.req.UserDto;
+import io.code.framework.example.demo.entity.resp.UserVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 测试类

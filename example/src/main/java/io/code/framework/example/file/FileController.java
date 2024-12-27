@@ -1,4 +1,4 @@
-package io.code.framework.example.controller.file;
+package io.code.framework.example.file;
 
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.GetMapping;

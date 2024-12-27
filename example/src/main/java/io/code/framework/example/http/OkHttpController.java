@@ -1,9 +1,9 @@
-package io.code.framework.example.controller.http;
+package io.code.framework.example.http;
 
 import com.alibaba.fastjson2.JSON;
 import io.code.framework.core.entity.ApiResponse;
-import io.code.framework.example.entity.req.UserDto;
-import io.code.framework.example.entity.resp.UserVo;
+import io.code.framework.example.demo.controller.entity.req.UserDto;
+import io.code.framework.example.demo.controller.entity.resp.UserVo;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Autowired;

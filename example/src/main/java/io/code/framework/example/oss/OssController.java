@@ -1,4 +1,4 @@
-package io.code.framework.example.controller.oss;
+package io.code.framework.example.oss;
 
 import com.aliyun.oss.model.DownloadFileResult;
 import com.aliyun.oss.model.OSSObject;
