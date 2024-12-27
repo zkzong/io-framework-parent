@@ -2,15 +2,16 @@ package io.code.framework.core.annotation.impl;
 
 import io.code.framework.core.annotation.ApiVersion;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.web.servlet.mvc.condition.*;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+import org.springframework.web.util.pattern.PathPatternParser;
 
 import java.lang.reflect.Method;
 
 @Slf4j
 public class CustomRequestMappingHandlerMapping extends RequestMappingHandlerMapping {
+
+    private RequestMappingInfo.BuilderConfiguration config = new RequestMappingInfo.BuilderConfiguration();
 
     //private static final Map<HandlerMethod, RequestMappingInfo> HANDLER_METHOD_REQUEST_MAPPING_INFO_MAP = Maps.newHashMap();
 
@@ -61,44 +62,63 @@ public class CustomRequestMappingHandlerMapping extends RequestMappingHandlerMap
     @Override
     protected RequestMappingInfo getMappingForMethod(Method method, Class<?> handlerType) {
         RequestMappingInfo info = super.getMappingForMethod(method, handlerType);
-        if (info == null) {
-            return null;
-        }
-
-        return createApiVersionInfo(method, handlerType, info);
-    }
-
-    private RequestMappingInfo createApiVersionInfo(Method method, Class<?> handlerType, RequestMappingInfo info) {
-        ApiVersion methodAnnotation = AnnotationUtils.findAnnotation(method, ApiVersion.class);
-        if (methodAnnotation != null) {
-            RequestCondition<?> methodCondition = getCustomMethodCondition(method);
-
-            info = createApiVersionInfo(methodAnnotation, methodCondition).combine(info);
-        } else {
-            ApiVersion typeAnnotation = AnnotationUtils.findAnnotation(handlerType, ApiVersion.class);
-            if (typeAnnotation != null) {
-                RequestCondition<?> typeCondition = getCustomTypeCondition(handlerType);
-
-                info = createApiVersionInfo(typeAnnotation, typeCondition).combine(info);
+        if (info != null) {
+            // 这里拿注解还是怎么的 根据自己业务来
+            ApiVersion apiVersion = handlerType.getAnnotation(ApiVersion.class);
+            if (apiVersion == null) {
+                return info;
             }
+            PathPatternParser patternParser = getPatternParser();
+            // fix patternParser
+            if (config.getPatternParser() == null) {
+                config.setPatternParser(patternParser);
+            }
+            info = RequestMappingInfo.paths(buildPrefix(apiVersion.value()))
+                    .options(config)
+                    .build()
+                    .combine(info);
         }
-        log.info("get mapping {}", info);
         return info;
     }
 
-    private RequestMappingInfo createApiVersionInfo(ApiVersion annotation, RequestCondition<?> customCondition) {
-        int[] values = annotation.value();
-        String[] patterns = new String[values.length];
-        for (int i = 0; i < values.length; i++) {
-            patterns[i] = "v" + values[i];
+    private String buildPrefix(int[] value) {
+        for (int i = 0; i < value.length; i++) {
+            return "v" + value[i];
         }
-
-        return new RequestMappingInfo(
-                new PatternsRequestCondition(patterns, getUrlPathHelper(), getPathMatcher(), useSuffixPatternMatch(),
-                        useTrailingSlashMatch(), getFileExtensions()),
-                new RequestMethodsRequestCondition(), new ParamsRequestCondition(),
-                new HeadersRequestCondition(), new ConsumesRequestCondition(),
-                new ProducesRequestCondition(), customCondition);
+        return "";
     }
+
+    //private RequestMappingInfo createApiVersionInfo(Method method, Class<?> handlerType, RequestMappingInfo info) {
+    //    ApiVersion methodAnnotation = AnnotationUtils.findAnnotation(method, ApiVersion.class);
+    //    if (methodAnnotation != null) {
+    //        RequestCondition<?> methodCondition = getCustomMethodCondition(method);
+    //
+    //        info = createApiVersionInfo(methodAnnotation, methodCondition).combine(info);
+    //    } else {
+    //        ApiVersion typeAnnotation = AnnotationUtils.findAnnotation(handlerType, ApiVersion.class);
+    //        if (typeAnnotation != null) {
+    //            RequestCondition<?> typeCondition = getCustomTypeCondition(handlerType);
+    //
+    //            info = createApiVersionInfo(typeAnnotation, typeCondition).combine(info);
+    //        }
+    //    }
+    //    log.info("get mapping {}", info);
+    //    return info;
+    //}
+
+    //private RequestMappingInfo createApiVersionInfo(ApiVersion annotation, RequestCondition<?> customCondition) {
+    //    int[] values = annotation.value();
+    //    String[] patterns = new String[values.length];
+    //    for (int i = 0; i < values.length; i++) {
+    //        patterns[i] = "v" + values[i];
+    //    }
+    //
+    //    return new RequestMappingInfo(
+    //            new PatternsRequestCondition(patterns, getUrlPathHelper(), getPathMatcher(), useSuffixPatternMatch(),
+    //                    useTrailingSlashMatch(), getFileExtensions()),
+    //            new RequestMethodsRequestCondition(), new ParamsRequestCondition(),
+    //            new HeadersRequestCondition(), new ConsumesRequestCondition(),
+    //            new ProducesRequestCondition(), customCondition);
+    //}
 
 }

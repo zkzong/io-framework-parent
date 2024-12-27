@@ -1,5 +1,6 @@
 package io.code.framework.example.controller;
 
+import io.code.framework.core.annotation.ApiVersion;
 import io.code.framework.core.entity.ApiResponse;
 import io.code.framework.core.entity.ApiResponseUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author: zong
  * @Date: 2021/9/3
  */
-//@ApiVersion(1)
+@ApiVersion(1)
 @RestController
 @RequestMapping("/api")
 @Slf4j

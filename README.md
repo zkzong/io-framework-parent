@@ -2,7 +2,9 @@
 
 ## core
 
-RestTemplate配置类
+OkHttp配置类：OkHttpConfig
+RestTemplate配置类：RestTemplateConfig
+WebClient配置类：WebClientConfig
 
 ### aspect
 
@@ -31,7 +33,10 @@ ExceptionController
 
 ### apiversion
 
-通过注解修改uri请求路径(升級后不可使用，待修改)
+通过注解修改uri请求路径
+
+Spring Boot 3：https://blog.csdn.net/chujianboy/article/details/136837325
+Spring Boot 2：https://chendd.cn/blog/article/1523485391036940289.html
 
 ### traceid
 
