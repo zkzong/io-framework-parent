@@ -63,6 +63,9 @@ ApiResponseUtil
 
 ## fastexcel
 
+https://github.com/HowieYuan/easyexcel-encapsulation
+https://github.com/pig-mesh/excel-spring-boot-starter
+
 - [ ] 动态列
 
 ## todo
