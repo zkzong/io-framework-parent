@@ -1,4 +1,4 @@
-package io.code.framework.example.redis;
+package io.code.framework.example.redis.controller;
 
 import io.code.framework.core.entity.ApiResponse;
 import io.code.framework.core.entity.ApiResponseUtil;
