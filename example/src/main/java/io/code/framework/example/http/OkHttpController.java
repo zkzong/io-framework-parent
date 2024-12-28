@@ -2,8 +2,8 @@ package io.code.framework.example.http;
 
 import com.alibaba.fastjson2.JSON;
 import io.code.framework.core.entity.ApiResponse;
-import io.code.framework.example.demo.entity.req.UserDto;
-import io.code.framework.example.demo.entity.resp.UserVo;
+import io.code.framework.example.req.UserDto;
+import io.code.framework.example.resp.UserVo;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.FormBody;
 import okhttp3.MediaType;

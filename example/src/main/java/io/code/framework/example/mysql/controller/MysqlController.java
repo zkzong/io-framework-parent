@@ -1,4 +1,4 @@
-package io.code.framework.example.mysql;
+package io.code.framework.example.mysql.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,4 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/mysql")
 public class MysqlController {
+
+    @RequestMapping("/get")
+    public String get() {
+        return "Hello Mysql";
+    }
 }
