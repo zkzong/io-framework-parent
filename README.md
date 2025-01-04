@@ -57,6 +57,14 @@ Spring Boot 2：https://chendd.cn/blog/article/1523485391036940289.html
 ApiResponse
 ApiResponseUtil
 
+## redis
+
+Lettuce
+
+Redisson
+
+- [ ] 支持多个redis配置 
+
 ## oss
 
 **key**是**目录+文件名**
