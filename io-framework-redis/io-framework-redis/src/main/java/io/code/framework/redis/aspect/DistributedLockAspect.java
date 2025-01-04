@@ -1,7 +1,7 @@
 package io.code.framework.redis.aspect;
 
 import io.code.framework.redis.annotation.DistributedLock;
-import io.code.framework.redis.utils.RedisUtils;
+import io.code.framework.redis.utils.RedissonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -24,7 +24,6 @@ import static io.code.framework.redis.constant.StringConstant.REDIS_KEY_CONNECTI
 import static io.code.framework.redis.constant.StringConstant.REDIS_SPLIT_KEY_CONNECTION_LINE;
 import static io.code.framework.redis.constant.StringConstant.REDIS_SPLIT_LINE;
 
-
 /**
  * 分布式锁解析器
  */
@@ -33,17 +32,17 @@ import static io.code.framework.redis.constant.StringConstant.REDIS_SPLIT_LINE;
 @Slf4j
 public class DistributedLockAspect {
 
-    @Pointcut("@annotation(io.code.framework.redis.annotation.DistributedLock)")
-    public void lockPoint() {
-    }
-
     @Autowired
-    RedisUtils redisUtils;
+    private RedissonUtil redissonUtil;
 
     private final ExpressionParser parser = new SpelExpressionParser();
 
     // spring boot 2使用LocalVariableTableParameterNameDiscoverer
     private final StandardReflectionParameterNameDiscoverer discoverer = new StandardReflectionParameterNameDiscoverer();
+
+    @Pointcut("@annotation(io.code.framework.redis.annotation.DistributedLock)")
+    public void lockPoint() {
+    }
 
     @Around("lockPoint()")
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
@@ -55,7 +54,7 @@ public class DistributedLockAspect {
         String keyName = prefix + parse(key, method, args);
         log.info("Redis分布式锁的key为 : {}", keyName);
         RLock lock = getLock(keyName, distributedLock);
-        log.info("[开始]执行RedisLock环绕通知,获取Redis分布式锁开始");
+        log.info("[开始]执行RedisLock环绕通知，获取Redis分布式锁开始");
         if (lock.tryLock(distributedLock.waitTime(), distributedLock.expireTime(), distributedLock.unit())) {
             try {
                 log.info("获取Redis分布式锁[成功]，加锁完成，开始执行业务逻辑...");
@@ -76,7 +75,7 @@ public class DistributedLockAspect {
     }
 
     /**
-     * @description 解析spring EL表达式
+     * 解析spring EL表达式
      */
     private String parse(String key, Method method, Object[] args) {
         if (StringUtils.isBlank(key)) {
@@ -104,13 +103,13 @@ public class DistributedLockAspect {
     private RLock getLock(String key, DistributedLock distributedLock) {
         switch (distributedLock.lockType()) {
             case REENTRANT_LOCK:
-                return redisUtils.getLock(key);
+                return redissonUtil.getLock(key);
             case FAIR_LOCK:
-                return redisUtils.getFairLock(key);
+                return redissonUtil.getFairLock(key);
             case READ_LOCK:
-                return redisUtils.getReadWriteLock(key).readLock();
+                return redissonUtil.getReadWriteLock(key).readLock();
             case WRITE_LOCK:
-                return redisUtils.getReadWriteLock(key).writeLock();
+                return redissonUtil.getReadWriteLock(key).writeLock();
             default:
                 throw new RuntimeException("do not support lock type:" + distributedLock.lockType().name());
         }
