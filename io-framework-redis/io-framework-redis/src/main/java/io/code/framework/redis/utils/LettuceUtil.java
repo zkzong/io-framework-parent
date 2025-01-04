@@ -1,8 +1,6 @@
 package io.code.framework.redis.utils;
 
 import jakarta.annotation.Resource;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -10,16 +8,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import static io.code.framework.redis.constant.StringConstant.REDIS_SPLIT_LINE;
-
 @Component
-public class LettuceUtil {
+public class LettuceUtil extends RedisUtil {
 
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
-
-    @Value("${redis.prefix:DEFAULT_}")
-    private String envPrefix;
 
     public boolean hasKey(String key) {
         Boolean hasKey = redisTemplate.hasKey(key);
@@ -68,26 +61,6 @@ public class LettuceUtil {
         } else {
             redisTemplate.opsForValue().set(key, value, expires, TimeUnit.SECONDS);
         }
-    }
-
-    private String assemblyKey(String key) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{").append(envPrefix).append("::");
-        if (key.contains(REDIS_SPLIT_LINE)) {
-            String[] split = key.split(REDIS_SPLIT_LINE);
-            sb.append(split[0]).append("}");
-            if (split.length > 1) {
-                for (int i = 1; i < split.length; i++) {
-                    String s = split[i];
-                    if (StringUtils.isNotBlank(s)) {
-                        sb.append("_").append(s);
-                    }
-                }
-            }
-        } else {
-            sb.append(key).append("}");
-        }
-        return sb.toString();
     }
 
 }

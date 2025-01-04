@@ -20,9 +20,9 @@ import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 
-import static io.code.framework.redis.constant.StringConstant.REDIS_KEY_CONNECTION_LINE;
-import static io.code.framework.redis.constant.StringConstant.REDIS_SPLIT_KEY_CONNECTION_LINE;
-import static io.code.framework.redis.constant.StringConstant.REDIS_SPLIT_LINE;
+import static io.code.framework.redis.constant.StringConstant.COLON;
+import static io.code.framework.redis.constant.StringConstant.PLUS;
+import static io.code.framework.redis.constant.StringConstant.SPLIT_PLUS;
 
 /**
  * 分布式锁解析器
@@ -91,11 +91,11 @@ public class DistributedLockAspect {
         }
         StringBuilder sb = new StringBuilder();
         String[] keys = new String[]{key};
-        if (key.contains(REDIS_KEY_CONNECTION_LINE)) {
-            keys = key.split(REDIS_SPLIT_KEY_CONNECTION_LINE);
+        if (key.contains(PLUS)) {
+            keys = key.split(SPLIT_PLUS);
         }
         for (String s : keys) {
-            sb.append(REDIS_SPLIT_LINE).append(parser.parseExpression(s).getValue(context, String.class));
+            sb.append(COLON).append(parser.parseExpression(s).getValue(context, String.class));
         }
         return sb.toString();
     }
