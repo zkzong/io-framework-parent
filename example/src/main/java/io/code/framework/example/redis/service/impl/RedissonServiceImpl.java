@@ -1,6 +1,6 @@
 package io.code.framework.example.redis.service.impl;
 
-import io.code.framework.example.redis.service.RedisService;
+import io.code.framework.example.redis.service.RedissonService;
 import io.code.framework.example.req.UserDto;
 import io.code.framework.example.resp.UserVo;
 import io.code.framework.redis.annotation.DistributedLock;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * @Date: 2025-01-04
  */
 @Service
-public class RedisServiceImpl implements RedisService {
+public class RedissonServiceImpl implements RedissonService {
 
     @DistributedLock(key = "#userDto.name+#userDto.age")
     @Override

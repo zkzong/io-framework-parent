@@ -9,10 +9,10 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 @Component
-public class LettuceUtil {
+public class LettuceUtil<T> {
 
     @Resource
-    private RedisTemplate<String, Object> redisTemplate;
+    private RedisTemplate<String, T> redisTemplate;
 
     public boolean hasKey(String key) {
         Boolean hasKey = redisTemplate.hasKey(key);
@@ -23,15 +23,15 @@ public class LettuceUtil {
         return redisTemplate.hasKey(key);
     }
 
-    public void listRightPush(String key, Object value) {
+    public void listRightPush(String key, T value) {
         redisTemplate.opsForList().rightPush(key, value);
     }
 
-    public void zSetAdd(String key, String value, double score) {
+    public void zSetAdd(String key, T value, double score) {
         redisTemplate.opsForZSet().add(key, value, score);
     }
 
-    public Set<Object> zSetRangeByScore(String key, double min, double max) {
+    public Set<T> zSetRangeByScore(String key, double min, double max) {
         return redisTemplate.opsForZSet().rangeByScore(key, min, max);
     }
 
@@ -43,7 +43,7 @@ public class LettuceUtil {
         return redisTemplate.opsForList().size(key);
     }
 
-    public List<Object> listRange(String key, Long start, Long end) {
+    public List<T> listRange(String key, Long start, Long end) {
         return redisTemplate.opsForList().range(key, start, end);
     }
 
@@ -51,11 +51,11 @@ public class LettuceUtil {
         redisTemplate.opsForList().trim(key, start, end);
     }
 
-    public Object get(String key) {
+    public T get(String key) {
         return redisTemplate.opsForValue().get(key);
     }
 
-    public void set(String key, String value, int expires) {
+    public void set(String key, T value, int expires) {
         if (expires <= 0) {
             redisTemplate.opsForValue().set(key, value);
         } else {
