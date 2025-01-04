@@ -10,7 +10,7 @@ import static io.code.framework.redis.constant.StringConstant.COLON;
  */
 public class RedisUtil {
 
-    @Value("${redis.prefix:prefix}")
+    @Value("${redis.prefix:redis}")
     private String envPrefix;
 
     protected String assemblyKey(String key) {

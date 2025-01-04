@@ -22,7 +22,7 @@ public @interface DistributedLock {
     /**
      * 锁的资源，key。支持spring El表达式
      */
-    String prefix() default "distributed-lock-redisson";
+    String prefix() default "lock";
 
     /**
      * 分布式锁名称: prefix+key
