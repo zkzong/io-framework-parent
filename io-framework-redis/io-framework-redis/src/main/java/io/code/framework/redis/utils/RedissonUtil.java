@@ -13,27 +13,27 @@ import java.util.concurrent.TimeUnit;
  * @Date: 2025-01-04
  */
 @Component
-public class RedissonUtil extends RedisUtil {
+public class RedissonUtil {
 
     @Resource
     private RedissonClient redissonClient;
 
     public RLock getLock(String key) {
-        return redissonClient.getLock(assemblyKey(key));
+        return redissonClient.getLock(key);
     }
 
     public RLock lock(String key, long time, TimeUnit timeUnit) {
-        RLock lock = getLock(assemblyKey(key));
+        RLock lock = getLock(key);
         lock.lock(time, timeUnit);
         return lock;
     }
 
     public RLock getFairLock(String key) {
-        return redissonClient.getFairLock(assemblyKey(key));
+        return redissonClient.getFairLock(key);
     }
 
     public RReadWriteLock getReadWriteLock(String key) {
-        return redissonClient.getReadWriteLock(assemblyKey(key));
+        return redissonClient.getReadWriteLock(key);
     }
 
 }

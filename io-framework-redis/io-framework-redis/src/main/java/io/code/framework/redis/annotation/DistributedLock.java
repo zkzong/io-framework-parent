@@ -20,12 +20,13 @@ import java.util.concurrent.TimeUnit;
 public @interface DistributedLock {
 
     /**
-     * 锁的资源，key。支持spring El表达式
+     * 锁的前缀
      */
-    String prefix() default "lock";
+    String prefix() default "redis:lock";
 
     /**
-     * 分布式锁名称: prefix+key
+     * 分布式锁名称：prefix+key
+     * key支持spring El表达式
      */
     String key() default "";
 
@@ -35,17 +36,17 @@ public @interface DistributedLock {
     long waitTime() default 3L;
 
     /**
-     * 锁超时时间,默认60秒
+     * 锁超时时间，默认60秒
      */
     int expireTime() default 60;
 
     /**
-     * 锁超时时间单位,默认为秒
+     * 锁超时时间单位，默认为秒
      */
     TimeUnit unit() default TimeUnit.SECONDS;
 
     /**
-     * 锁类型 默认为可重入锁
+     * 锁类型：默认为可重入锁
      */
     LockType lockType() default LockType.REENTRANT_LOCK;
 }
