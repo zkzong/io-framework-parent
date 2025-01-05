@@ -71,7 +71,7 @@ public class WebClientController {
                 .bodyToMono(new ParameterizedTypeReference<ApiResponse<UserVo>>() {
                 });
 
-        MultiValueMap map = new LinkedMultiValueMap();
+        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         map.add("name", name);
         map.add("age", age.toString());
         // 使用queryParams
