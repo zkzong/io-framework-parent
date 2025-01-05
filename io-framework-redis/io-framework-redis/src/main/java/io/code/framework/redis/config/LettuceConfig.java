@@ -13,9 +13,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 public class LettuceConfig {
 
-    /***
+    /**
      * 连接工厂：RedisConnectionFactory LettuceConnectionFactory
-     *
      */
     @Bean
     public <T> RedisTemplate<String, T> redisTemplate(LettuceConnectionFactory lettuceConnectionFactory) {
