@@ -119,9 +119,9 @@ public class WebClientController {
                 .bodyToMono(new ParameterizedTypeReference<ApiResponse<String>>() {
                 });
 
-        String s = apiResponseMono.block().getData();
+        String data = apiResponseMono.block().getData();
 
-        return ApiResponseUtil.success(s);
+        return ApiResponseUtil.success(data);
     }
 
     @PostMapping("/path/{name}")
@@ -135,9 +135,9 @@ public class WebClientController {
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<ApiResponse<String>>() {
                 });
-        String s = apiResponseMono.block().getData();
+        String data = apiResponseMono.block().getData();
 
-        return ApiResponseUtil.success(s);
+        return ApiResponseUtil.success(data);
     }
 
 }
