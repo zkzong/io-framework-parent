@@ -87,7 +87,6 @@ public class TestController implements BaseController {
         return ApiResponseUtil.success(req.toString());
     }
 
-    // todo
     @PostMapping("/path/{name}")
     public ApiResponse<String> path(@PathVariable String name) {
         return ApiResponseUtil.success(name);
