@@ -10,6 +10,8 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -107,32 +109,35 @@ public class WebClientController {
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<ApiResponse<String>>() {
                 });
+        apiResponseMono = webClientBuilder.baseUrl("http://127.0.0.1:8080").build()
+                .get()
+                .uri(uriBuilder -> uriBuilder.path("/test/getParam")
+                        .queryParam("name", name)
+                        .queryParam("age", age)
+                        .build())
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<ApiResponse<String>>() {
+                });
 
         String s = apiResponseMono.block().getData();
 
         return ApiResponseUtil.success(s);
     }
 
-    @RequestMapping("/getForm")
-    public ApiResponse<String> getForm(@RequestParam String name, @RequestParam Integer age) {
-        log.info("name = {}, age = {}", name, age);
+    @PostMapping("/path/{name}")
+    public ApiResponse<String> path(@PathVariable String name) {
+        log.info("name = {}", name);
 
-        //// todo 待完善
-        //okhttp3.RequestBody body = new FormBody.Builder()
-        //        .add("name", name)
-        //        .add("age", age.toString())
-        //        .build();
-        //
-        //Request request = new Request.Builder()
-        //        .url("http://127.0.0.1:8080/test/getForm?name={name}&age={age}")
-        //        .get().build();
-        //
-        //Response response = okHttpClient.newCall(request).execute();
-        //if (response.isSuccessful()) {
-        //    String s = response.body().string();
-        //    return JSON.parseObject(s, ApiResponse.class);
-        //}
-        return null;
+        Mono<ApiResponse<String>> apiResponseMono = webClientBuilder.baseUrl("http://127.0.0.1:8080").build()
+                .post()
+                .uri(uriBuilder -> uriBuilder.path("/test/path/{name}")
+                        .build(name))
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<ApiResponse<String>>() {
+                });
+        String s = apiResponseMono.block().getData();
+
+        return ApiResponseUtil.success(s);
     }
 
 }
