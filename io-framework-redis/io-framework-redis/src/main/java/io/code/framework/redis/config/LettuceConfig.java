@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.GenericToStringSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
@@ -14,13 +13,26 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 public class LettuceConfig {
 
+    /***
+     * 连接工厂：RedisConnectionFactory LettuceConnectionFactory
+     *
+     */
     @Bean
     public <T> RedisTemplate<String, T> redisTemplate(LettuceConnectionFactory lettuceConnectionFactory) {
         RedisTemplate<String, T> template = new RedisTemplate<>();
         template.setConnectionFactory(lettuceConnectionFactory);
-        template.setKeySerializer(new StringRedisSerializer());
-        GenericToStringSerializer genericToStringSerializer = new GenericToStringSerializer(Object.class);
-        template.setValueSerializer(genericToStringSerializer);
+
+        // 使用 StringRedisSerializer 作为 key 和 value 的序列化器
+        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+
+        template.setKeySerializer(stringRedisSerializer);
+        template.setValueSerializer(stringRedisSerializer);
+        //GenericToStringSerializer genericToStringSerializer = new GenericToStringSerializer(Object.class);
+        //template.setValueSerializer(genericToStringSerializer);
+        template.setHashKeySerializer(stringRedisSerializer);
+        template.setHashValueSerializer(stringRedisSerializer);
+        template.afterPropertiesSet();
+
         return template;
     }
 
