@@ -44,9 +44,12 @@ public class TestController implements BaseController {
      * @return
      */
     @PostMapping("/postParam")
-    public ApiResponse<String> postParam(@RequestParam String name, @RequestParam Integer age) {
+    public ApiResponse<UserVo> postParam(@RequestParam String name, @RequestParam Integer age) {
         log.info("postParam");
-        return ApiResponseUtil.success("Hello World, name=" + name + ", age=" + age);
+        UserVo userVo = new UserVo();
+        userVo.setName(name);
+        userVo.setAge(age);
+        return ApiResponseUtil.success(userVo);
     }
 
     /**
