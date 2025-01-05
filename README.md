@@ -62,6 +62,7 @@ ApiResponseUtil
 Lettuce
 
 Redisson
+- DistributedLock使用Redisson实现分布式锁
 
 - [ ] 支持多个redis配置 
 
