@@ -56,12 +56,12 @@ public class WebClientController {
     public ApiResponse<UserVo> postParam(@RequestParam String name, @RequestParam Integer age) {
         log.info("name = {}, age = {}", name, age);
 
-        // todo 待完善
         Mono<ApiResponse<UserVo>> apiResponseMono = webClientBuilder.baseUrl("http://127.0.0.1:8080").build()
                 .post()
-                .uri("/test/postParam")
-                .attribute("name", name)
-                .attribute("age", age)
+                .uri(builder -> builder.path("/test/postParam")
+                        .queryParam("name", name)
+                        .queryParam("age", age)
+                        .build())
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<ApiResponse<UserVo>>() {
                 });
