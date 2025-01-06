@@ -1,7 +1,7 @@
 package io.code.example.consumer.service.impl;
 
+import io.code.example.consumer.service.DemoService;
 import io.code.framework.core.annotation.Delete;
-import io.code.example.api.demo.service.DemoService;
 import org.springframework.stereotype.Service;
 
 /**
