@@ -1,0 +1,16 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: example-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.163.128:8848
+  main:
+    allow-bean-definition-overriding: true
+
+logging:
+  level:
+    root: info

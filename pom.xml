@@ -22,10 +22,13 @@
         <module>io-framework-oss</module>
         <module>io-framework-redis</module>
         <module>io-framework-fastexcel</module>
+        <module>io-framework-gateway-server</module>
+        <module>io-framework-gateway-client</module>
 
         <module>example</module>
         <module>example-provider</module>
         <module>example-consumer</module>
+        <module>example-gateway</module>
     </modules>
 
     <build>
