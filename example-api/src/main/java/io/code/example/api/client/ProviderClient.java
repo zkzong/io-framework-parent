@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ProviderClient {
 
     @RequestMapping("/provider/sayHello")
-    String sayHello(@RequestParam String name);
+    String sayHello(@RequestParam(value = "name") String name);
 
 }
