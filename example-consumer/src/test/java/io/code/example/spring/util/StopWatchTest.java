@@ -1,4 +1,4 @@
-package util;
+package io.code.example.spring.util;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.util.StopWatch;

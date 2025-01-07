@@ -1,4 +1,4 @@
-package io.code.example.consumer.controller.file.excel;
+package io.code.example.consumer.file.excel;
 
 import io.code.framework.fastexcel.ExcelUtil;
 import jakarta.servlet.http.HttpServletResponse;

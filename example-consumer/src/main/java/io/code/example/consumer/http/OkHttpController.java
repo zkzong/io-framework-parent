@@ -1,4 +1,4 @@
-package io.code.example.consumer.controller.http;
+package io.code.example.consumer.http;
 
 import com.alibaba.fastjson2.JSON;
 import io.code.example.api.req.UserDto;

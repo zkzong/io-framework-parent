@@ -1,6 +1,6 @@
-package util;
+package io.code.example.spring.util;
 
-import util.entity.Employee;
+import io.code.example.spring.util.entity.Employee;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.CollectionUtils;
 

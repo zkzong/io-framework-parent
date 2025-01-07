@@ -1,6 +1,6 @@
 package io.code.example.consumer.controller;
 
-import io.code.example.consumer.client.ProviderClient;
+import io.code.example.api.client.ProviderClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

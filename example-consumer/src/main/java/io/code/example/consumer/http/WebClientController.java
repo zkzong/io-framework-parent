@@ -1,4 +1,4 @@
-package io.code.example.consumer.controller.http;
+package io.code.example.consumer.http;
 
 import io.code.example.api.req.UserDto;
 import io.code.example.api.resp.UserVo;

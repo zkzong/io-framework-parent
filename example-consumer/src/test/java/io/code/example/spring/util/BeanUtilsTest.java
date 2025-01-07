@@ -1,8 +1,8 @@
-package util;
+package io.code.example.spring.util;
 
-import util.entity.Less;
-import util.entity.More;
-import util.entity.Person;
+import io.code.example.spring.util.entity.Less;
+import io.code.example.spring.util.entity.More;
+import io.code.example.spring.util.entity.Person;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;

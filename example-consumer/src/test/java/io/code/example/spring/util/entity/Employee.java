@@ -1,4 +1,4 @@
-package util.entity;
+package io.code.example.spring.util.entity;
 
 import lombok.Data;
 
