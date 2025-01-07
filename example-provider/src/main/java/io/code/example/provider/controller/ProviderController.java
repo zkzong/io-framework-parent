@@ -1,8 +1,14 @@
 package io.code.example.provider.controller;
 
+import io.code.example.api.req.UserDto;
+import io.code.example.api.resp.UserVo;
+import io.code.framework.core.entity.ApiResponse;
+import io.code.framework.core.entity.ApiResponseUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -10,10 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class ProviderController {
 
-    @RequestMapping("/sayHello")
-    public String sayHello(@RequestParam String name) {
-        log.info("name = {}", name);
-        return "hello, " + name;
+    @PostMapping("/user")
+    public ApiResponse<UserVo> sayHello(@RequestBody UserDto userDto) {
+        log.info("userDto = {}", userDto);
+        UserVo userVo = null;
+        BeanUtils.copyProperties(userDto, userVo);
+        return ApiResponseUtil.success(userVo);
     }
 
 }

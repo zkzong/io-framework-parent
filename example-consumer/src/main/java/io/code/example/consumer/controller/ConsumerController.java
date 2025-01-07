@@ -1,8 +1,13 @@
 package io.code.example.consumer.controller;
 
 import io.code.example.api.client.ProviderClient;
+import io.code.example.api.req.UserDto;
+import io.code.example.api.resp.UserVo;
+import io.code.framework.core.entity.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,16 +23,16 @@ public class ConsumerController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @RequestMapping("/sayHello/feign")
-    public String sayHelloFeign(@RequestParam String name) {
-        log.info("name = {}", name);
-        return providerClient.sayHello(name);
+    @PostMapping("/user/feign")
+    public ApiResponse<UserVo> userFeign(@RequestBody UserDto userDto) {
+        log.info("userDto = {}", userDto);
+        return providerClient.user(userDto);
     }
 
-    @RequestMapping("/sayHello/resttemplate")
-    public String sayHelloRest(@RequestParam String name) {
-        log.info("name = {}", name);
-        return restTemplate.postForObject("http://127.0.0.1:8081/provider/sayHello?name={name}", null, String.class, name);
+    @PostMapping("/user/resttemplate")
+    public String userRest(@RequestBody UserDto userDto) {
+        log.info("userDto = {}", userDto);
+        return restTemplate.postForObject("http://127.0.0.1:8081/provider/user?name={name}", null, String.class, name);
     }
 
 }

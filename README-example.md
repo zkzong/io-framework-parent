@@ -1,4 +1,4 @@
-# example
+# example-api
 
 # example-provider
 

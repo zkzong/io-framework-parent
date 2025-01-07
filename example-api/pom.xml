@@ -35,6 +35,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.30</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.code</groupId>
+            <artifactId>io-framework-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>
