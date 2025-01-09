@@ -10,19 +10,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/consumer")
+@RequestMapping("/feign/consumer")
 @Slf4j
-public class ConsumerController {
+public class FeignConsumerController {
 
     @Autowired
     private ProviderClient providerClient;
-    @Autowired
-    private RestTemplate restTemplate;
 
-    @PostMapping("/user/feign")
+    @PostMapping("/user")
     public ApiResponse<UserVo> userFeign(@RequestBody UserDto userDto) {
         log.info("userDto = {}", userDto);
         return providerClient.user(userDto);

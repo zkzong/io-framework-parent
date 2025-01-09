@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(name = "example-provider")
 public interface ProviderClient {
 
-    @PostMapping("/provider/user")
+    @PostMapping("/feign/provider/user")
     ApiResponse<UserVo> user(@RequestBody UserDto userDto);
 
 }

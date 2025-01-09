@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/provider")
+@RequestMapping("/feign/provider")
 @Slf4j
-public class ProviderController {
+public class FeignProviderController {
 
     @PostMapping("/user")
     public ApiResponse<UserVo> sayHello(@RequestBody UserDto userDto) {
