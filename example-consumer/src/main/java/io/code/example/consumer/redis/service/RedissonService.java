@@ -1,7 +1,7 @@
 package io.code.example.consumer.redis.service;
 
-import io.code.framework.example.req.UserDto;
-import io.code.framework.example.resp.UserVo;
+import io.code.example.api.req.UserDto;
+import io.code.example.api.resp.UserVo;
 
 /**
  * @Author: zongz
