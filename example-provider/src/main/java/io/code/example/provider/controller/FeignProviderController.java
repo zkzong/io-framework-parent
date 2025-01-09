@@ -19,7 +19,7 @@ public class FeignProviderController {
     @PostMapping("/user")
     public ApiResponse<UserVo> sayHello(@RequestBody UserDto userDto) {
         log.info("userDto = {}", userDto);
-        UserVo userVo = null;
+        UserVo userVo = new UserVo();
         BeanUtils.copyProperties(userDto, userVo);
         return ApiResponseUtil.success(userVo);
     }
