@@ -1,15 +1,19 @@
 server:
-  port: 8082
+  port: 8080
 
 spring:
   application:
-    name: example-consumer
+    name: example-gateway
   cloud:
     nacos:
       discovery:
         server-addr: 192.168.163.128:8848
-  main:
-    allow-bean-definition-overriding: true
+    gateway:
+      router:
+        - id: example-provider
+          uri: lb://example-provider
+          predicates:
+            - Path=/provider/**
 
 logging:
   level:
