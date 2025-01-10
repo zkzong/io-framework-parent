@@ -1,4 +1,4 @@
-package io.code.example.service;
+package io.code.example.consumer.service;
 
 import com.aliyun.oss.model.DownloadFileResult;
 import com.aliyun.oss.model.OSSObject;

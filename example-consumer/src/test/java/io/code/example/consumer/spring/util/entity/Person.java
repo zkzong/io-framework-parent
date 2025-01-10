@@ -1,4 +1,4 @@
-package io.code.example.spring.util.entity;
+package io.code.example.consumer.spring.util.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

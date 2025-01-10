@@ -1,4 +1,4 @@
-package io.code.example.spring.util;
+package io.code.example.consumer.spring.util;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.util.StringUtils;
