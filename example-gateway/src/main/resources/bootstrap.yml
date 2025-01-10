@@ -9,11 +9,21 @@ spring:
       discovery:
         server-addr: 192.168.163.128:8848
     gateway:
-      router:
+      routes:
         - id: example-provider
           uri: lb://example-provider
           predicates:
             - Path=/provider/**
+#          filters:
+#            - StripPrefix=1
+        - id: example-consumer
+          uri: lb://example-consumer
+          predicates:
+            - Path=/consumer/**
+#          filters:
+#            - StripPrefix=1
+      default-filters:
+        - StripPrefix=1
 
 logging:
   level:
