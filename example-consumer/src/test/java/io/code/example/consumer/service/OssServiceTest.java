@@ -35,14 +35,14 @@ public class OssServiceTest {
 
     @Test
     public void putObject() {
-        PutObjectResult result = ossService.putObject("dev/testing/", file);
+        PutObjectResult result = ossService.putObject("folder/", file);
         System.out.println(result);
         assertNotNull(result);
     }
 
     @Test
     public void putObjectRequest() {
-        PutObjectResult result = ossService.putObjectRequest("dev/testing/", file);
+        PutObjectResult result = ossService.putObjectRequest("folder/", file);
         System.out.println(result);
         assertNotNull(result);
     }
