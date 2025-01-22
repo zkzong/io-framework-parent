@@ -2,10 +2,10 @@ package io.code.example.consumer.mysql.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.code.framework.core.entity.ApiResponse;
-import io.code.framework.core.entity.ApiResponseUtil;
 import io.code.example.consumer.mysql.entity.User;
 import io.code.example.consumer.mysql.service.UserService;
+import io.code.framework.common.entity.ApiResponse;
+import io.code.framework.common.entity.ApiResponseUtil;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;

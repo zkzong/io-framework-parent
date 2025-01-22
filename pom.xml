@@ -17,6 +17,7 @@
     </properties>
 
     <modules>
+        <module>io-framework-common</module>
         <module>io-framework-core</module>
         <module>io-framework-datasource</module>
         <module>io-framework-oss</module>

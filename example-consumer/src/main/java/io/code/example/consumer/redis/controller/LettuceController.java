@@ -1,7 +1,7 @@
 package io.code.example.consumer.redis.controller;
 
-import io.code.framework.core.entity.ApiResponse;
-import io.code.framework.core.entity.ApiResponseUtil;
+import io.code.framework.common.entity.ApiResponse;
+import io.code.framework.common.entity.ApiResponseUtil;
 import io.code.framework.redis.utils.LettuceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

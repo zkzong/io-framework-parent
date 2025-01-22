@@ -2,7 +2,7 @@ package io.code.example.consumer.http;
 
 import io.code.example.api.req.UserDto;
 import io.code.example.api.resp.UserVo;
-import io.code.framework.core.entity.ApiResponse;
+import io.code.framework.common.entity.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
