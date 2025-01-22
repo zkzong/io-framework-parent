@@ -1,7 +1,7 @@
 package io.code.framework.core.exception;
 
-import io.code.framework.core.entity.ApiResponse;
-import io.code.framework.core.entity.ApiResponseUtil;
+import io.code.framework.common.entity.ApiResponse;
+import io.code.framework.common.entity.ApiResponseUtil;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.ValidationException;
 import org.slf4j.Logger;

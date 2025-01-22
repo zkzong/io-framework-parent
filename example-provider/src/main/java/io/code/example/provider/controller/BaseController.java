@@ -1,6 +1,6 @@
 package io.code.example.provider.controller;
 
-import io.code.framework.core.entity.ApiResponse;
+import io.code.framework.common.entity.ApiResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

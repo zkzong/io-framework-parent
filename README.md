@@ -57,6 +57,12 @@ Spring Boot 2：https://chendd.cn/blog/article/1523485391036940289.html
 ApiResponse
 ApiResponseUtil
 
+## 通用加解密
+
+1、GlobalFilter
+2、
+3、
+
 ## redis
 
 Lettuce
@@ -83,4 +89,3 @@ https://github.com/pig-mesh/excel-spring-boot-starter
 - [ ] 多租户
 - [ ] core添加spring-cloud依赖
 - [ ] DeleteInterceptor日志没有traceid
-- [ ] 通用加解密

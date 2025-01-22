@@ -2,8 +2,8 @@ package io.code.example.provider.controller;
 
 import io.code.example.api.req.UserDto;
 import io.code.example.api.resp.UserVo;
-import io.code.framework.core.entity.ApiResponse;
-import io.code.framework.core.entity.ApiResponseUtil;
+import io.code.framework.common.entity.ApiResponse;
+import io.code.framework.common.entity.ApiResponseUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.PostMapping;

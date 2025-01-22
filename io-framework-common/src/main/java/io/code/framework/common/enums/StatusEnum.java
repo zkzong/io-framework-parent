@@ -1,4 +1,4 @@
-package io.code.framework.core;
+package io.code.framework.common.enums;
 
 /**
  * @Author: zongz

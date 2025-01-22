@@ -1,8 +1,8 @@
 package io.code.example.consumer.controller;
 
+import io.code.framework.common.entity.ApiResponse;
+import io.code.framework.common.entity.ApiResponseUtil;
 import io.code.framework.core.annotation.ApiVersion;
-import io.code.framework.core.entity.ApiResponse;
-import io.code.framework.core.entity.ApiResponseUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

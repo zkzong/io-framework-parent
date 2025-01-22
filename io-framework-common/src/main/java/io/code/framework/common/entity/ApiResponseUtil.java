@@ -1,6 +1,6 @@
-package io.code.framework.core.entity;
+package io.code.framework.common.entity;
 
-import io.code.framework.core.StatusEnum;
+import io.code.framework.common.enums.StatusEnum;
 
 /**
  * 返回结果工具类

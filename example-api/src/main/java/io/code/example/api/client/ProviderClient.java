@@ -2,7 +2,7 @@ package io.code.example.api.client;
 
 import io.code.example.api.req.UserDto;
 import io.code.example.api.resp.UserVo;
-import io.code.framework.core.entity.ApiResponse;
+import io.code.framework.common.entity.ApiResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

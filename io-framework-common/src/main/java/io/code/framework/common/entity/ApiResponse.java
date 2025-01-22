@@ -1,4 +1,4 @@
-package io.code.framework.core.entity;
+package io.code.framework.common.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
