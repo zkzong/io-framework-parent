@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: example-provider
+  main:
+    web-application-type: reactive
   cloud:
     nacos:
       discovery:
