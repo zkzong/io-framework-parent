@@ -1,8 +1,10 @@
 package io.code.framework.gateway.server.filter;
 
-import cn.hutool.crypto.SecureUtil;
+import cn.hutool.crypto.Mode;
+import cn.hutool.crypto.Padding;
 import cn.hutool.crypto.symmetric.AES;
 import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONObject;
 import io.code.framework.common.entity.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.reactivestreams.Publisher;
@@ -38,7 +40,7 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
 
     private static final String BODY_ENCRYPT_HEADER = "X-ENCRYPTED";
 
-    AES aes = SecureUtil.aes("keyskeyskeyskeys".getBytes());
+    AES aes = new AES(Mode.CBC, Padding.PKCS5Padding, "keyskeyskeyskeys".getBytes(), "keyskeyskeyskeys".getBytes());
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -92,7 +94,9 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
 
     private String decryptRequest(String originalRequestBody) {
         log.info("请求参数解密，原文：{}", originalRequestBody);
-        String decrypted = aes.decryptStr(originalRequestBody);
+        JSONObject jsonObject = JSON.parseObject(originalRequestBody);
+        String encryptData = jsonObject.get("encryptData").toString();
+        String decrypted = aes.decryptStr(encryptData);
         log.info("请求参数解密，明文：{}", decrypted);
         return decrypted;
     }
@@ -102,7 +106,7 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
         // 只对data字段进行加密处理
         Object data = apiResponse.getData();
         if (Objects.nonNull(data)) {
-            apiResponse.setData(aes.encrypt(data.toString()));
+            apiResponse.setData(aes.encryptHex(data.toString()));
         }
         log.info("响应结果加密，原文：{}", originalResponseBody);
         String result = JSON.toJSONString(apiResponse);
@@ -157,7 +161,7 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
                         // 加密
                         byte[] encryptedByteArray = encryptResponse(originalResponseBody).getBytes(StandardCharsets.UTF_8);
                         originalResponse.getHeaders().setContentLength(encryptedByteArray.length);
-                        originalResponse.getHeaders().setContentType(MediaType.APPLICATION_JSON_UTF8);
+                        originalResponse.getHeaders().setContentType(MediaType.APPLICATION_JSON);
                         return dataBufferFactory.wrap(encryptedByteArray);
                     }));
                 }

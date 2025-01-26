@@ -60,6 +60,7 @@ ApiResponseUtil
 ## 通用加解密
 
 1、GlobalFilter
+  需要和spring cloud gateway配合使用
 2、
 3、
 
