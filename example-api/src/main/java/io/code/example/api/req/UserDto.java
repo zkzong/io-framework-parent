@@ -9,6 +9,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 public class UserDto implements Serializable {
@@ -27,5 +28,7 @@ public class UserDto implements Serializable {
     @NotBlank(message = "身份证号不能为空")
     @IdentityCardNumber(message = "身份证信息有误,请核对后提交")
     private String idNo;
+
+    private Date date;
 
 }
