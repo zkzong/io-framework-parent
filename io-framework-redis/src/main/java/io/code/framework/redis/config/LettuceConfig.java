@@ -13,6 +13,11 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 public class LettuceConfig {
 
+    @Bean
+    public LettuceConnectionFactory lettuceConnectionFactory() {
+        return new LettuceConnectionFactory();
+    }
+
     /**
      * 连接工厂：RedisConnectionFactory LettuceConnectionFactory
      */
