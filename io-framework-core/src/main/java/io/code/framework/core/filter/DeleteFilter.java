@@ -29,8 +29,7 @@ public class DeleteFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
-        if (servletRequest instanceof HttpServletRequest) {
-            HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+        if (servletRequest instanceof HttpServletRequest httpServletRequest) {
 
             StringBuilder sb = new StringBuilder("使用Filter获取请求信息[");
 

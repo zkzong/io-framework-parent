@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,7 +77,7 @@ public class ExcelUtil {
             if (!file.exists() || file.isDirectory()) {
                 file.createNewFile();
             }
-            fileName = new String(filePath.getBytes(), "ISO-8859-1");
+            fileName = new String(filePath.getBytes(), StandardCharsets.ISO_8859_1);
             response.addHeader("Content-Disposition", "filename=" + fileName);
             return response.getOutputStream();
         } catch (IOException e) {

@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 @Slf4j
 public class CustomRequestMappingHandlerMapping extends RequestMappingHandlerMapping {
 
-    private RequestMappingInfo.BuilderConfiguration config = new RequestMappingInfo.BuilderConfiguration();
+    private final RequestMappingInfo.BuilderConfiguration config = new RequestMappingInfo.BuilderConfiguration();
 
     //private static final Map<HandlerMethod, RequestMappingInfo> HANDLER_METHOD_REQUEST_MAPPING_INFO_MAP = Maps.newHashMap();
 

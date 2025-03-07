@@ -8,6 +8,7 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * RestTemplate配置类
@@ -21,7 +22,7 @@ public class RestTemplateConfig {
     @Bean
     public RestTemplate restTemplate(ClientHttpRequestFactory factory) {
         RestTemplate restTemplate = new RestTemplate(factory);
-        restTemplate.setInterceptors(Arrays.asList(new RestTemplateTraceIdInterceptor()));
+        restTemplate.setInterceptors(List.of(new RestTemplateTraceIdInterceptor()));
         return restTemplate;
     }
 

@@ -25,12 +25,12 @@ import java.util.StringJoiner;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    private static String DUPLICATE_KEY_CODE = "1001";
-    private static String PARAM_FAIL_CODE = "1002";
-    private static String VALIDATION_CODE = "1003";
-    private static String METHOD_NOT_SUPPORTED = "1004";
+    private static final String DUPLICATE_KEY_CODE = "1001";
+    private static final String PARAM_FAIL_CODE = "1002";
+    private static final String VALIDATION_CODE = "1003";
+    private static final String METHOD_NOT_SUPPORTED = "1004";
 
     /**
      * 处理自定义异常

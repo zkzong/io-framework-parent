@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class YamlDynamicDataSourceProvider implements DynamicDataSourceProvider {
 
-    private DynamicDataSourceProperties properties;
+    private final DynamicDataSourceProperties properties;
 
     public YamlDynamicDataSourceProvider(DynamicDataSourceProperties properties) {
         this.properties = properties;

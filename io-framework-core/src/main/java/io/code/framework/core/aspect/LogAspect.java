@@ -54,8 +54,7 @@ public class LogAspect {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         final Signature signature = joinPoint.getSignature();
-        if (signature instanceof MethodSignature) {
-            MethodSignature methodSignature = (MethodSignature) signature;
+        if (signature instanceof MethodSignature methodSignature) {
 
             final String hostAddress = InetAddress.getLocalHost().getHostAddress();
             final String port = environment.getProperty("server.port");
@@ -71,22 +70,20 @@ public class LogAspect {
                 log.info(entry.getKey() + "=" + Arrays.stream(entry.getValue()).collect(Collectors.joining(",")));
             });
 
-            StringBuilder sb = new StringBuilder("使用Aspect获取请求信息[");
-
             // 请求方ip
-            sb.append(request.getRemoteAddr()).append("|")
+            String sb = "使用Aspect获取请求信息[" + request.getRemoteAddr() + "|" +
                     // 目标方ip和port
-                    .append(hostAddress).append(":").append(port).append("|")
+                    hostAddress + ":" + port + "|" +
                     // 请求方式：POST、GET...
-                    .append(request.getMethod()).append("|")
+                    request.getMethod() + "|" +
                     // URI
-                    .append(request.getRequestURI()).append("|")
+                    request.getRequestURI() + "|" +
                     // 类名、方法名
-                    .append(methodSignature.getDeclaringTypeName()).append(".").append(methodSignature.getName()).append("|")
+                    methodSignature.getDeclaringTypeName() + "." + methodSignature.getName() + "|" +
                     // 入参
-                    .append(Arrays.toString(joinPoint.getArgs()))
-                    .append("]");
-            log.info(sb.toString());
+                    Arrays.toString(joinPoint.getArgs()) +
+                    "]";
+            log.info(sb);
         }
 
         // 记录下请求内容

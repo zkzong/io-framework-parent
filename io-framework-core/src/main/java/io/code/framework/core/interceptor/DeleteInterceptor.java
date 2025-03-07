@@ -23,8 +23,7 @@ public class DeleteInterceptor implements HandlerInterceptor {
 
         //获取注解位置，切入点
         Delete annotation;
-        if (handler instanceof HandlerMethod) {
-            HandlerMethod handlerMethod = (HandlerMethod) handler;
+        if (handler instanceof HandlerMethod handlerMethod) {
 
             // 入参使用@RequestParam
             Enumeration<String> parameterNames = request.getParameterNames();
