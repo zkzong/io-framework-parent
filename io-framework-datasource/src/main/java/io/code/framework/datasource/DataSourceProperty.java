@@ -1,9 +1,9 @@
 package io.code.framework.datasource;
 
-import lombok.Getter;
-import lombok.Setter;
 import io.code.framework.datasource.druid.DruidDataSourceProperties;
 import io.code.framework.datasource.hikari.HikariDataSourceProperties;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
 @Getter

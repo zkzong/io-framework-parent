@@ -1,9 +1,9 @@
 package io.code.framework.datasource;
 
+import io.code.framework.datasource.toolkit.DataSourceContextHolder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import io.code.framework.datasource.toolkit.DataSourceContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import org.springframework.web.context.support.GenericWebApplicationContext;

@@ -1,8 +1,8 @@
 package io.code.framework.core.traceid.interceptor;
 
-import io.code.framework.core.traceid.Constants;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+import io.code.framework.core.traceid.Constants;
 import org.slf4j.MDC;
 import org.springframework.context.annotation.Configuration;
 
