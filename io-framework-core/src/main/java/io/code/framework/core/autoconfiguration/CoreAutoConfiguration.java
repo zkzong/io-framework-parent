@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 自动装配
+ *
  * @Author: zongz
  * @Date: 2024/11/16
  */
