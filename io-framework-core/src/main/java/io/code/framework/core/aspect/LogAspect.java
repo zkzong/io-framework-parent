@@ -71,18 +71,9 @@ public class LogAspect {
 
             String paramStr = "";
 
-            // 如果入参是form方式，joinPoint.getArgs()只能获取到值，不能获取key
-            Map<String, String[]> parameterMap = request.getParameterMap();
-            int size = parameterMap.size();
-            if (size > 0) {
-                Set<Map.Entry<String, String[]>> entries = parameterMap.entrySet();
-                //entries.forEach(entry -> {
-                //    log.info(entry.getKey() + "=" + Arrays.stream(entry.getValue()).collect(Collectors.joining(",")));
-                //});
-                for (Map.Entry<String, String[]> entry : entries) {
-                    paramStr += entry.getKey() + "=" + Arrays.stream(entry.getValue()).collect(Collectors.joining(",")) + ", ";
-                }
-            }
+            // 入参是form表单，joinPoint.getArgs()和request.getParameterMap()都有值
+            // 但是joinPoint.getArgs()只能获取到值，不能获取key
+            // 入参是body，joinPoint.getArgs()有值，request.getParameterMap()为空
             Object[] args = joinPoint.getArgs();
             int length = args.length;
             if (length > 0) {
@@ -90,6 +81,19 @@ public class LogAspect {
                     paramStr = objectMapper.writeValueAsString(args);
                 } catch (JsonProcessingException e) {
                     log.error("解析入参错误");
+                }
+            }
+
+            Map<String, String[]> parameterMap = request.getParameterMap();
+            int size = parameterMap.size();
+            if (size > 0) {
+                paramStr = "";
+                Set<Map.Entry<String, String[]>> entries = parameterMap.entrySet();
+                //entries.forEach(entry -> {
+                //    log.info(entry.getKey() + "=" + Arrays.stream(entry.getValue()).collect(Collectors.joining(",")));
+                //});
+                for (Map.Entry<String, String[]> entry : entries) {
+                    paramStr += entry.getKey() + "=" + Arrays.stream(entry.getValue()).collect(Collectors.joining(",")) + ", ";
                 }
             }
 
