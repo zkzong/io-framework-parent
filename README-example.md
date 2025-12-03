@@ -1,3 +1,7 @@
+# example-simple
+
+不依赖中间件
+
 # example-api
 
 封装FeignClient、DTO、VO等公共类
