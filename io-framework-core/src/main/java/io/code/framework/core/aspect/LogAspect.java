@@ -89,7 +89,7 @@ public class LogAspect {
                 try {
                     paramStr = objectMapper.writeValueAsString(args);
                 } catch (JsonProcessingException e) {
-                    throw new RuntimeException(e);
+                    log.error("解析入参错误");
                 }
             }
 
@@ -123,7 +123,11 @@ public class LogAspect {
     @AfterReturning(returning = "ret", pointcut = "log()")
     public void doAfterReturning(Object ret) {
         // 处理完请求，返回内容
-        log.info("RESPONSE : " + ret);
+        try {
+            log.info("RESPONSE : " + objectMapper.writeValueAsString(ret));
+        } catch (JsonProcessingException e) {
+            log.error("解析返回值错误");
+        }
     }
 
 }
