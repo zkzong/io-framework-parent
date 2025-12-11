@@ -6,8 +6,10 @@ import io.code.framework.core.annotation.Delete;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -32,7 +34,7 @@ import java.util.stream.Collectors;
 @Aspect
 @Component
 @Slf4j
-public class LogAspect {
+public class LogAroundAspect {
 
     @Autowired
     private Environment environment;
@@ -53,8 +55,8 @@ public class LogAspect {
     public void log() {
     }
 
-    @Before("log()")
-    public void doBefore(JoinPoint joinPoint) throws UnknownHostException {
+    @Around("log()")
+    public Object doBefore(ProceedingJoinPoint joinPoint) throws UnknownHostException {
         // 接收到请求，记录请求内容
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
@@ -121,17 +123,15 @@ public class LogAspect {
         //log.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
         //log.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
 
-
-    }
-
-    @AfterReturning(returning = "ret", pointcut = "log()")
-    public void doAfterReturning(Object ret) {
-        // 处理完请求，返回内容
+        Object result;
         try {
-            log.info("After RESPONSE : " + objectMapper.writeValueAsString(ret));
-        } catch (JsonProcessingException e) {
-            log.error("解析返回值错误");
+            result = joinPoint.proceed();
+            log.info("Around response : {}", objectMapper.writeValueAsString(result));
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
+
+        return result;
     }
 
 }
