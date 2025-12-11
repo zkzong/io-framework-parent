@@ -1,5 +1,6 @@
 package io.code.example.simple.controller;
 
+import io.code.example.simple.entity.dto.FileDto;
 import io.code.framework.common.entity.ApiResponse;
 import io.code.framework.common.entity.ApiResponseUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +48,7 @@ public class SimpleController {
     }
 
     @PostMapping("/file")
-    public ApiResponse file(MultipartFile file) {
+    public ApiResponse file(FileDto dto) {
         return ApiResponseUtil.success();
     }
 }
