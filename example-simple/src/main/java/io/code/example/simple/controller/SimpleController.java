@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 
 @RestController
 @RequestMapping("/simple")
@@ -18,7 +21,7 @@ public class SimpleController {
 
     @PostMapping("/post")
     public ApiResponse post() {
-        return ApiResponseUtil.success(null);
+        return ApiResponseUtil.success();
     }
 
     @PostMapping("/postBody")
@@ -40,6 +43,11 @@ public class SimpleController {
 
     @GetMapping("/get")
     public ApiResponse get() {
-        return ApiResponseUtil.success(null);
+        return ApiResponseUtil.success();
+    }
+
+    @PostMapping("/file")
+    public ApiResponse file(MultipartFile file) {
+        return ApiResponseUtil.success();
     }
 }

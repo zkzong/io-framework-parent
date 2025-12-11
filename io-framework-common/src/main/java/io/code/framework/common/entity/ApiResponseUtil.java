@@ -25,6 +25,11 @@ public class ApiResponseUtil {
         return response;
     }
 
+
+    public static ApiResponse success() {
+        return success(null);
+    }
+
     /**
      * 封装error的响应
      *
